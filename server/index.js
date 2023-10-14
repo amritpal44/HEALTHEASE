@@ -1,6 +1,9 @@
 const dotenv = require('dotenv');
-
+const database = require("./config/database");
 const express = require('express');
+const cookieParser = require('cookie-parser');
+const userRoutes = require("./routes/userRoutes");
+
 const app = express();
 
 //loading port number
@@ -15,12 +18,16 @@ app.listen(PORT, () => {
 
 
 //connect to db
-const database = require("./config/database");
 database.connect();
 
 
 //json parse middleware
 app.use(express.json());
+app.use(cookieParser());
+
+
+
+app.use("/api/v1/auth", userRoutes);
 
 
 

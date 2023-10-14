@@ -9,7 +9,7 @@ const doctorSchema = new mongoose.Schema(
         },
         age: {
             type: Number,
-            required: true
+            //required: true
         },
         patient: [
             {
@@ -19,7 +19,7 @@ const doctorSchema = new mongoose.Schema(
         ],
         specialization: {
             type: String,
-            required: true
+            //required: true
         },
         appointments: [
             {

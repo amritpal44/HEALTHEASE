@@ -9,7 +9,7 @@ const patientSchema = new mongoose.Schema(
         },
         age: {
             type: Number,
-            required: true
+            //required: true
         },
         appointments: [
             {
