@@ -24,7 +24,7 @@ const doctorSchema = new mongoose.Schema(
         appointments: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "Appointments"
+                ref: "Appointment"
             }
         ],
         ratingAndReview: [

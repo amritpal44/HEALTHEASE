@@ -9,6 +9,8 @@ const otpGenerator = require("otp-generator");
 const patientModel = require("../models/patientModel");
 
 exports.signup = async (req, res) => {
+
+
     try {
         const{firstName, lastName, email, password, confirmPassword, accountType, contactNumber, otp} = req.body;
 
@@ -148,7 +150,7 @@ exports.login = async(req, res) => {
                 success: true,
                 token,
                 user,
-                message: "User login success"
+                message: "User login success",
             })
         }
         else{

@@ -14,7 +14,7 @@ const patientSchema = new mongoose.Schema(
         appointments: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "Appointments"
+                ref: "Appointment"
             }
         ],
         prescriptions: [
