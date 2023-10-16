@@ -23,7 +23,7 @@ const vendorSchema = new mongoose.Schema(
             type: String,
             //required: true
         },
-        medicine: [
+        medicines: [
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "Medicine"

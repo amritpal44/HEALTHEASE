@@ -33,6 +33,12 @@ const medicineSchema = new mongoose.Schema(
             type: Number,
             required: true
         },
+        images: [
+            {
+                type: String,
+                required: true
+            }
+        ],
         ratingAndReview: [
             {
                 type: mongoose.Schema.Types.ObjectId,
