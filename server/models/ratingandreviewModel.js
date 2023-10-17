@@ -14,6 +14,11 @@ const ratingAndReviewSchema = new mongoose.Schema({
 	review: {
 		type: String,
 		required: true,
+	},
+	doctor: {
+		type: mongoose.Schema.Types.ObjectId,
+		required: true,
+		ref: "Doctor"
 	}
 });
 
