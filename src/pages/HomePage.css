@@ -1,0 +1,10 @@
+.hidden-transiton {
+    opacity: 0.5;
+    transition: all ease-out 0.5s;
+    transform: translateY(20%);
+  }
+  
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
