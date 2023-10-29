@@ -9,6 +9,9 @@ module.exports = {
       //   'home-buildings': "url('/src/assests/images/homepagebackground.jpg')"
       // }
     },
+    fontFamily: {
+      'clarity-city': ['Clarity City', 'sans']
+    }
   },
   plugins: [],
 }

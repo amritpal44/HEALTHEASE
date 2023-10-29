@@ -3,7 +3,7 @@ import { Routes,Route } from 'react-router-dom';
 import './App.css';
 import HomePage from './pages/HomePage';
 import Navbar from './components/Common/Navbar';
-import { useEffect } from 'react'
+
 
 function App() {
 
@@ -29,7 +29,7 @@ function App() {
 
 
   return (
-    <div className="flex flex-col w-screen min-h-screen justify-content items-center overflow-x-hidden">
+    <div className="flex flex-col min-h-screen justify-content items-center overflow-x-hidden overflow-y-hidden">
       <Navbar /> 
       <Routes>
 

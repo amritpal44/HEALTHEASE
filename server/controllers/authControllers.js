@@ -216,5 +216,5 @@ exports.sendotp = async (req, res) => {
 
 
 exports.changePassword = async(req, res) => {
-
+    
 }
