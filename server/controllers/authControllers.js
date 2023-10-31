@@ -192,10 +192,21 @@ exports.sendotp = async (req, res) => {
             specialChars: false
         });
 
-        const otpBody = await OTP.create({
-            email,
-            otp
-        });
+        
+        try {
+            var otpBody = await OTP.create({
+                email,
+                otp
+            });
+            
+        } catch (error) {
+            console.log("Error in otp controller: ", error);
+            return res.status(500).json({ 
+                success: false, 
+                error: error.message 
+            });
+        }
+
 
         console.log("otp body: ", otpBody);
         res.status(200).json({

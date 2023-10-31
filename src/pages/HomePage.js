@@ -10,6 +10,7 @@ import globe from "../assests/logo/globe.png"
 import contactus from "../assests/logo/contactus.png"
 
 import {FaArrowRight} from "react-icons/fa"
+import Navbar from '../components/Common/Navbar'
 
 const HomePage = () => {
 
@@ -41,6 +42,7 @@ const HomePage = () => {
   return (
     <div className=''>
 
+      <Navbar/>
 
       {/* SECTION 1 */}
       <div className='relative flex flex-col w-[99.6%] justify-center items-center'>

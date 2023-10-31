@@ -36,9 +36,9 @@ exports.showAllCategory = async(req, res) => {
 
     try {
         
-        const allCategory = await categoryModel.find();
+        const allCategory = await categoryModel.find().populate('medicines');
         res.status(200).json({
-            success: false,
+            success: true,
             data: allCategory
         })
 

@@ -35,7 +35,7 @@ const Signup = () => {
                 Unlock a world of wellness and convenience by signing up with HealthEase. Together, we'll embark on a journey to a healthier, happier you.
             </p>
             
-            <Tab tabData={tabData} field={accountType} setField={setAccountType} />
+            <Tab tabData={tabData} />
 
             <form>
                 

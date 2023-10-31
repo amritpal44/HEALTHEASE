@@ -11,6 +11,8 @@ const fileUpload = require('express-fileupload');
 
 const app = express();
 
+const cors = require('cors');
+
 //loading port number
 dotenv.config();
 const PORT = process.env.PORT;
@@ -38,6 +40,9 @@ app.use(
         tempFileDir: "/tmp/"
     })
 )
+
+//allow request from http://localhost:3000
+app.use(cors({ origin: "http://localhost:3000" }));
 
 
 //setting up routes
