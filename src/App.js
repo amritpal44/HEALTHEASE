@@ -8,6 +8,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Signup from './pages/Signup';
 import Category from './pages/Category';
+import VerifyEmail from './pages/VerifyEmail';
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
 
         <Route path="/login" element={<Login/>} />
         <Route path='/signup' element={<Signup/>}/>
+        <Route path='/verify-email' element={<VerifyEmail/>}/>
 
         <Route path='/category' element={<Category/>}/>
 

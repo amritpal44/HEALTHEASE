@@ -8,11 +8,18 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducer/rootReducer';
 import { configureStore } from '@reduxjs/toolkit';
 import { Toaster } from 'react-hot-toast';
+// import thunk from 'redux-thunk';
+
+// import { createStore, applyMiddleware} from 'redux'
 
 
 const store = configureStore({
-  reducer: rootReducer
+  reducer: rootReducer,
+  // middleware: [thunk]
 })
+
+
+// const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

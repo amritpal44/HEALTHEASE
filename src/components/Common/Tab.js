@@ -7,9 +7,9 @@ export default function Tab({ tabData, field, setField }) {
             onClick={() => setField(tab.type)}
             className={`${
               field === tab.type
-                ? "bg-richblack-900 text-richblack-5"
-                : "bg-transparent text-richblack-200"
-            } py-2 px-5 rounded-full transition-all duration-200`}
+                ? "bg-[#3d65ff] text-slate-200"
+                : "bg-transparent text-richblack-200 border border-slate-400 text-slate-400"
+            } py-2 px-5 rounded-full transition-all duration-200 font-medium mr-8`}
           >
             {tab?.tabName}
           </button>
