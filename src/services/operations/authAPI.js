@@ -1,8 +1,9 @@
 
-import { setLoading } from "../../slices/authSlice";
+import { setLoading, setToken } from "../../slices/authSlice";
 import toast from "react-hot-toast";
 import { apiConnector } from "../apiconnector";
 import { endpoints } from "../apis";
+import { setUser } from "../../slices/profileSlice";
 
 
 
@@ -62,4 +63,85 @@ export function sendOtp(email, navigate) {
       dispatch(setLoading(false))
       toast.dismiss(toastId)
     }
+}
+
+
+export function signup(firstName, lastName, email, contactNumber, password, confirmPassword, accountType, otp, navigate){
+
+  return async(dispatch) => {
+    const toastId = toast.loading("Loading...");
+    dispatch(setLoading(true));
+
+    try {
+      const response = await apiConnector("POST", endpoints.SIGNUP_API, {
+        firstName,
+        lastName,
+        email, 
+        contactNumber, 
+        password,
+        confirmPassword,
+        otp,
+        accountType
+      })
+
+      console.log("SIGNUP API RESPONSE........", response);
+
+      if(!response.data.success){
+        throw new Error(response);
+      }
+
+      toast.success("Signup Successfull");
+      navigate("/login");
+    } catch (error) {
+      console.log("SIGNUP API ERROR............", error)
+      toast.error(error?.response?.data?.message)
+      navigate("/signup")
+    }
+
+    dispatch(setLoading(false));
+    toast.dismiss(toastId);
+  }
+
+}
+
+
+export function login(email, password, navigate){
+
+
+  return async (dispatch) => {
+    const toastId = toast.loading("Loading...");
+    dispatch(setLoading(true));
+
+    try {
+      
+      const response = await apiConnector("POST", endpoints.LOGIN_API, {
+        email,
+        password
+      })
+
+      if(!response.data.success){
+        throw new Error(response);
+      }
+
+      dispatch(setToken(response.data.token))
+      
+      const userImage = response.data?.user?.image
+      ? response.data.user.image
+      : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`
+      
+      dispatch(setUser({...response.data.user, image: userImage}));
+      
+      localStorage.setItem("token", JSON.stringify(response.data.token));
+      
+      navigate("/");
+      toast.success("Login Successful");
+      
+    } catch (error) {
+      console.log("LOGIN API ERROR............", error)
+      toast.error("Login Failed")
+    }
+
+    toast.dismiss(toastId);
+    dispatch(setLoading(false))
+  }
 }

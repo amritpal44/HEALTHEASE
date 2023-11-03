@@ -51,7 +51,7 @@ exports.signup = async (req, res) => {
                 message: "OTP is not generated for this email."
             })
         }
-        else if(otp !== dbOTP[0].otp){
+        else if(otp != dbOTP[0].otp){
             return res.status(400).json({
                 success: false,
                 message: "OTP entered is not correct"
