@@ -33,9 +33,9 @@ const HomePage = () => {
     const hiddenElements = document.querySelectorAll('.hidden-transition');
     hiddenElements.forEach((el) => observer.observe(el));
 
-    // return () => {
-    //   hiddenElements.forEach((el) => observer.unobserve(el));
-    // };
+    return () => {
+      hiddenElements.forEach((el) => observer.unobserve(el));
+    };
   }, []);
 
 

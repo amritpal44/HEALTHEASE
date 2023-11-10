@@ -19,7 +19,7 @@ const Navbar = () => {
 
 
   return (
-    <div className='w-full bg-transparent font-clarity-city flex justify-evenly mt-3'>
+    <div className='w-screen bg-black font-clarity-city flex justify-evenly p-3'>
       
       <Link to={"/"}>
         <div className='flex items-center text-slate-200 text-5xl gap-1'>
@@ -57,6 +57,7 @@ const Navbar = () => {
       </div>
 
       <div className='flex gap-4'>
+      
         {token === null && (
           <Link to="/login">
             <button className=" bg-[#3d65ff] text-slate-200 text-lg font-medium rounded-full px-[22px] py-[7px] text-richblack-100 hover:-translate-y-[2px] ease-linear duration-200">

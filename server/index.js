@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 
 const userRoutes = require("./routes/userRoutes");
 const medicineRoutes = require("./routes/medicineRoutes");
+const doctorRoutes = require("./routes/doctorRoutes");
 
 const { cloudinaryConnect } = require('./config/cloudinary');
 const fileUpload = require('express-fileupload');
@@ -48,6 +49,7 @@ app.use(cors({ origin: "http://localhost:3000" }));
 //setting up routes
 app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/medicine", medicineRoutes);
+app.use("/api/v1/doctor", doctorRoutes);
 
 
 //test

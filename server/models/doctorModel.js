@@ -7,6 +7,9 @@ const doctorSchema = new mongoose.Schema(
             ref: "User",
             required: true
         },
+        fee:{
+            type: Number
+        },
         age: {
             type: Number,
             //required: true

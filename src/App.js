@@ -9,6 +9,11 @@ import Contact from './pages/Contact';
 import Signup from './pages/Signup';
 import Category from './pages/Category';
 import VerifyEmail from './pages/VerifyEmail';
+import BookingPage from './pages/BookingPage';
+import DoctorList from './pages/DoctorList';
+
+import PublicRoute from './components/Core/Auth/PublicRoute';
+import ForgorPassword from './pages/ForgorPassword';
 
 
 function App() {
@@ -43,11 +48,36 @@ function App() {
         <Route path="/about" element={<About/>} />
         <Route path="/contact" element={<Contact />} />
 
-        <Route path="/login" element={<Login/>} />
-        <Route path='/signup' element={<Signup/>}/>
-        <Route path='/verify-email' element={<VerifyEmail/>}/>
+        
+        <Route path="/login" element={
+          <PublicRoute>
+            <Login/>
+          </PublicRoute>
+        } />
+
+        <Route path='/signup' element={
+          <PublicRoute>
+            <Signup/>
+          </PublicRoute>
+        }/>
+        <Route path='/verify-email' element={
+          <PublicRoute>
+            <VerifyEmail/>
+          </PublicRoute>
+        }/>
 
         <Route path='/category' element={<Category/>}/>
+
+
+        <Route 
+          path='/doctor/book-appointment/:doctorId'
+          element={<BookingPage/>}
+        />
+        <Route path='/doctors' element={<DoctorList/>}></Route>
+
+        <Route path='forgot-password' element={
+          <ForgorPassword/> 
+        }/>
 
       </Routes>
     </div>

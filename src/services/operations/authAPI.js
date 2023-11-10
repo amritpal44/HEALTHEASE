@@ -145,3 +145,21 @@ export function login(email, password, navigate){
     dispatch(setLoading(false))
   }
 }
+
+
+
+export function logout(navigate) {
+
+  return (dispatch) => {
+
+    dispatch(setToken(null));
+    dispatch(setUser(null));
+    //cart data reset pending
+    
+    localStorage.clear();
+    toast.success("Logged Out");
+    navigate("/");
+
+  }
+
+}

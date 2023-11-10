@@ -11,6 +11,9 @@ const profileSlice = createSlice({
     reducers: {
         setUser(state, value) {
             state.user = value.payload;
+        },
+        updateUser(state, value){
+            state.user = [...state.user, ...value.payload]
         }
     }
 })
