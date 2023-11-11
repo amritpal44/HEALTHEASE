@@ -130,6 +130,8 @@ export function login(email, password, navigate){
       : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`
       
       dispatch(setUser({...response.data.user, image: userImage}));
+
+      localStorage.setItem("user", JSON.stringify({...response.data.user, image: userImage}))
       
       localStorage.setItem("token", JSON.stringify(response.data.token));
       
@@ -147,19 +149,74 @@ export function login(email, password, navigate){
 }
 
 
+export function getResetPasswordToken(email, setEmailSent) {
+  return async (dispatch) => {
+    const toastId = toast.loading("Loading...")
+    dispatch(setLoading(true))
+    try {
+      const response = await apiConnector("POST", endpoints.RESET_PASSWORD_TOKEN_API, {
+        email,
+      })
+
+      console.log("RESETPASSTOKEN RESPONSE............", response)
+
+      if (!response.data.success) {
+        throw new Error(response.data.message)
+      }
+
+      toast.success("Reset Email Sent")
+      setEmailSent(true)
+    } catch (error) {
+      console.log("RESETPASSTOKEN ERROR............", error)
+      toast.error("Failed To Send Reset Email")
+    }
+    toast.dismiss(toastId)
+    dispatch(setLoading(false))
+  }
+}
+
+export function setResetPassword(password, confirmPassword, token, navigate){
+  return async(dispatch) => {
+    dispatch(setLoading(true));
+    const toastId = toast.loading("Loading...");
+
+    try {
+      const response = await apiConnector("POST", endpoints.RESET_PASSWORD_API, {
+        password, 
+        confirmPassword,
+        token
+      })
+
+      if(response.data.success){
+        toast.success("Password has been reset successfully");
+      }else{
+        throw new Error(response.data.message)
+      }
+
+      navigate("/login");
+    } catch (error) {
+      console.log("RESET PASSWORD TOKEN Error: ", error);
+      toast.error("Unable to reset password. Try again");
+    }
+    
+    dispatch(setLoading(false));
+    toast.dismiss(toastId);
+  }
+}
+
 
 export function logout(navigate) {
 
   return (dispatch) => {
 
-    dispatch(setToken(null));
-    dispatch(setUser(null));
+    // dispatch(setToken(null));
+    // dispatch(setUser(null));
     //cart data reset pending
     
     localStorage.clear();
     toast.success("Logged Out");
     navigate("/");
+    window.location.reload();
 
   }
-
 }

@@ -9,7 +9,8 @@ import { logout } from "../../../services/operations/authAPI"
 import useOnClickOutside from "../../../hooks/useOnClickOutside"
 
 export default function ProfileDropdown() {
-  const { user } = useSelector((state) => state.profile)
+  // const user = JSON.parse(localStorage.getItem("user"));
+  const {user} = useSelector( (state) => state.profile);
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [open, setOpen] = useState(false)
@@ -39,7 +40,7 @@ export default function ProfileDropdown() {
             <Link to="/dashboard/my-profile" onClick={() => setOpen(false)}>
               <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm text-slate-100 hover:bg-slate-700 hover:text-slate-25">
                 <VscDashboard className="text-lg" />
-                Update Profile
+                Dashboard
               </div>
             </Link>
             <div

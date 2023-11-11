@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import logo from "../assests/logo/healthease.png"
 import { useDispatch } from 'react-redux'
 import { login } from '../services/operations/authAPI'
+import { BiArrowBack } from "react-icons/bi"
 
 const Login = () => {
 
@@ -48,7 +49,7 @@ const Login = () => {
           Unlock a world of wellness and convenience by signing up with HealthEase. Together, we'll embark on a journey to a healthier, happier you.
         </p>
 
-        <form onSubmit={handleOnSubmit} className='font-semibold text-[17px] flex flex-col gap-4'>
+        <form onSubmit={handleOnSubmit} className='font-semibold mt-7 text-[17px] flex flex-col gap-4'>
           <div>
             <label>
               <p>Email</p>
@@ -68,6 +69,13 @@ const Login = () => {
             Sign in
           </button>
         </form>
+        <div className="mt-4 flex items-center justify-between">
+            <Link to="/reset-password">
+              <p className="flex items-center gap-x-2">
+                  <BiArrowBack /> Reset Password
+              </p>
+            </Link>
+        </div>
       </div>
     </div>
   )

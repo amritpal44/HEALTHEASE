@@ -13,7 +13,11 @@ import BookingPage from './pages/BookingPage';
 import DoctorList from './pages/DoctorList';
 
 import PublicRoute from './components/Core/Auth/PublicRoute';
-import ForgorPassword from './pages/ForgorPassword';
+import ForgotPassword from './pages/ForgotPassword';
+import UpdatePassword from './pages/UpdatePassword';
+import Dashboard from './pages/Dashboard';
+import PrivateRoute from './components/Core/Auth/PrivateRoute';
+import Cart from './components/Core/Dashboard/Cart/Cart';
 
 
 function App() {
@@ -75,10 +79,26 @@ function App() {
         />
         <Route path='/doctors' element={<DoctorList/>}></Route>
 
-        <Route path='forgot-password' element={
-          <ForgorPassword/> 
+        <Route path='/reset-password' element={
+          <ForgotPassword/> 
+        }/>
+        <Route path='/update-password/:id' element={
+          <UpdatePassword/>
         }/>
 
+
+        {/* .............dashboard routes ............. */}
+        <Route path='/dashboard/my-profile' element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>    
+        }/>
+        <Route path='/dashboard/cart' element={
+          <PrivateRoute>
+            <Cart />
+          </PrivateRoute>    
+        }/>
+      
       </Routes>
     </div>
   );
