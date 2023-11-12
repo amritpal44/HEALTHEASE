@@ -18,6 +18,8 @@ import UpdatePassword from './pages/UpdatePassword';
 import Dashboard from './pages/Dashboard';
 import PrivateRoute from './components/Core/Auth/PrivateRoute';
 import Cart from './components/Core/Dashboard/Cart/Cart';
+import MyProfile from './components/Core/Dashboard/MyProfile';
+import Error from './pages/Error';
 
 
 function App() {
@@ -88,16 +90,19 @@ function App() {
 
 
         {/* .............dashboard routes ............. */}
-        <Route path='/dashboard/my-profile' element={
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>    
-        }/>
-        <Route path='/dashboard/cart' element={
-          <PrivateRoute>
-            <Cart />
-          </PrivateRoute>    
-        }/>
+        <Route element={ <PrivateRoute> <Dashboard /> </PrivateRoute>}> 
+
+          <Route path='/dashboard/my-profile' element={
+            <PrivateRoute>
+              <MyProfile />
+            </PrivateRoute>    
+          }/>
+
+        </Route>
+
+
+
+        <Route path='*' element={<Error/>}/>
       
       </Routes>
     </div>
