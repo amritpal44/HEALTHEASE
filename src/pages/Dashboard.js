@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Outlet } from 'react-router-dom'
 import { ClipLoader } from 'react-spinners'
 import Sidebar from '../components/Core/Dashboard/Sidebar'
+import Navbar from '../components/Common/Navbar'
 
 const Dashboard = () => {
 
@@ -19,13 +20,18 @@ const Dashboard = () => {
 
 
   return (
-    <div className='flex w-screen'>
-      
-        <Sidebar />
 
-        <div className='justify-center w-[80%]'>
-          <Outlet />
-        </div>
+    <div className='flex flex-col bg-black bg-opacity-5'>
+      <Navbar/>
+      <div className='flex '>
+        
+          <Sidebar />
+
+          <div className='flex justify-center w-[80%]'>
+            <Outlet />
+          </div>
+
+      </div>
 
     </div>
     // <div className="relative flex min-h-[calc(100vh-3.5rem)]">

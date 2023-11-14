@@ -116,7 +116,7 @@ exports.login = async(req, res) => {
         }
 
         //find user
-        const user = await userModel.findOne({email});
+        var user = await userModel.findOne({email});
         if (!user) {
             // Return 401 Unauthorized status code with error message
             return res.status(401).json({
@@ -141,6 +141,22 @@ exports.login = async(req, res) => {
 
             user.token = token;
             user.password = undefined;
+            
+            //adding additional detial to user object
+            if(user.accountType === "Patient"){
+                const patientDetail = await patientModel.findOne({user: user._id});
+                user = {
+                    ...user.toObject(),
+                    ...patientDetail.toObject()
+                }
+            }
+            else if(user.accountType === "Doctor"){
+                const doctorDetail = await doctorModel.findOne({user: user._id});
+                user = {
+                    ...user.toObject(),
+                    ...doctorDetail.toObject()
+                }
+            }
 
             const options = {
                 expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),

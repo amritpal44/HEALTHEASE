@@ -50,8 +50,8 @@ const MyProfile = () => {
                         <RiEditBoxLine />
                     </IconBtn>
                 </div>
-                <p className={`${ user?.additionalDetails?.about ? "" : "text-slate-400" } text-sm font-medium`} >
-                    {user?.additionalDetails?.about ?? "Write Something About Yourself"}
+                <p className={`${ user?.about ? "" : "text-slate-400" } text-sm font-medium`} >
+                    {user?.about ?? "Write Something About Yourself"}
                 </p>
             </div>
 
@@ -82,7 +82,7 @@ const MyProfile = () => {
                         <div>
                         <p className="mb-2 text-l text-slate-600">Gender</p>
                         <p className="text-sm font-medium ">
-                            {user?.additionalDetails?.gender ?? "Add Gender"}
+                            {user?.gender ?? "Add Gender"}
                         </p>
                         </div>
                     </div>
@@ -102,7 +102,7 @@ const MyProfile = () => {
                         <div>
                             <p className="mb-2 text-l text-slate-600">Date Of Birth</p>
                             <p className="text-sm font-medium ">
-                                {formattedDate(user?.additionalDetails?.dateOfBirth) ??
+                                {formattedDate(user?.dateOfBirth) ??
                                 "Add Date Of Birth"}
                             </p>
                         </div>

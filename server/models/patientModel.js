@@ -7,9 +7,14 @@ const patientSchema = new mongoose.Schema(
             ref: "User",
             required: true
         },
-        age: {
-            type: Number,
-            //required: true
+        about: {
+            type: String
+        },
+        gender: {
+            type: String,
+        },
+        dateOfBirth: {
+            type: String,
         },
         appointments: [
             {

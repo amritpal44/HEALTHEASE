@@ -21,13 +21,13 @@ export default function ProfileDropdown() {
   if (!user) return null
 
   return (
-    <div>
+    <div className="mt-[5px]"> 
       <button className="relative" onClick={() => setOpen(true)}>
         <div className="flex items-center gap-x-1">
           <img
             src={user?.image}
             alt={`profile-${user?.firstName}`}
-            className="aspect-square w-[30px] rounded-full object-cover"
+            className="aspect-square w-[36px] rounded-full object-cover"
           />
           <AiOutlineCaretDown className="text-sm text-slate-100" />
         </div>

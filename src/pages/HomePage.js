@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import PrimaryButton from '../components/Common/PrimaryButton'
 import SecondaryButton from '../components/Common/SecondaryButton'
 
-import homebuildings from "../assests/images/home-buildings-2.png"
+import homebuildings from "../assests/images/home-buildings.jpg"
 import globe from "../assests/logo/globe.png"
 import contactus from "../assests/logo/contactus.png"
 

@@ -20,3 +20,9 @@ export const doctorendpoints = {
     GET_ONE_DOCTOR_DETAIL_API: BASE_URL + "/doctor/getDoctorDetail",
     GET_ALL_DOCTOR_DETAIL_API: BASE_URL + "/doctor/getAllDoctorDetail"
 }
+
+
+export const settingsEndpoints = {
+    UPDATE_DISPLAY_PICTURE_API: BASE_URL + "/profile/updateDisplayPicture",
+    UPDATE_PROFILE_API: BASE_URL + "/profile/updateProfile"
+}

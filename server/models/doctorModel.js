@@ -7,12 +7,17 @@ const doctorSchema = new mongoose.Schema(
             ref: "User",
             required: true
         },
+        about: {
+            type: String
+        },
+        gender: {
+            type: String,
+        },
+        dateOfBirth: {
+            type: String,
+        },
         fee:{
             type: Number
-        },
-        age: {
-            type: Number,
-            //required: true
         },
         patient: [
             {

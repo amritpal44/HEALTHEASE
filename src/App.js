@@ -16,6 +16,7 @@ import PublicRoute from './components/Core/Auth/PublicRoute';
 import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
 import Dashboard from './pages/Dashboard';
+import Settings from './components/Core/Dashboard/Settings';
 import PrivateRoute from './components/Core/Auth/PrivateRoute';
 import Cart from './components/Core/Dashboard/Cart/Cart';
 import MyProfile from './components/Core/Dashboard/MyProfile';
@@ -46,7 +47,7 @@ function App() {
 
 
   return (
-    <div className="flex flex-col min-h-screen justify-content items-center overflow-x-hidden overflow-y-hidden">
+    <div className="flex flex-col w-[98.93vw] justify-content items-center overflow-x-clip">
       {/* <Navbar />  */}
       <Routes>
 
@@ -91,6 +92,12 @@ function App() {
 
         {/* .............dashboard routes ............. */}
         <Route element={ <PrivateRoute> <Dashboard /> </PrivateRoute>}> 
+
+          <Route path='/dashboard/settings' element={
+            <PrivateRoute>
+              <Settings/>
+            </PrivateRoute>
+          } />
 
           <Route path='/dashboard/my-profile' element={
             <PrivateRoute>

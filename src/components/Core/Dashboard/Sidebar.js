@@ -37,7 +37,7 @@ const Sidebar = () => {
             {/* <ClipLoader size={50} /> */}
         </div>
     ) : (
-        <div className='flex flex-col min-w-[200px] border-r-[1px] border-r-slate-700 py-10 ml-2'>
+        <div className='flex flex-col min-w-[200px] border-r-[1px] border-r-slate-700 pt-10 ml-2'>
 
             <div className='flex flex-col gap-2'>
 
