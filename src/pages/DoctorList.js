@@ -4,6 +4,7 @@ import { doctorendpoints } from '../services/apis'
 import { ClipLoader } from 'react-spinners';
 import DoctorCard from '../components/Core/Doctor/DoctorCard';
 import Navbar from '../components/Common/Navbar';
+import GetAvgRating from '../utils/avgRating';
 
 const DoctorList = () => {
 
@@ -31,23 +32,25 @@ const DoctorList = () => {
 
 
   return (
-    <div>
-        {/* <Navbar/> */}
-        {
-            loading ? (
-                <div className=' flex justify-center h-full w-full items-center'>
-                    <ClipLoader size={50} />
-                </div> 
-            ):doctorsDetail ? (
-                doctorsDetail.map((doctor, index) => (
-                    <div key={index}>
-                        <DoctorCard doctor={doctor}/>
-                    </div>
-                ))
-            ) : (
-            <div>No doctors data available.</div>
-            )
-        }
+    <div className='flex flex-col'>
+        <Navbar/>
+        <div className='flex gap-10 mt-16 justify-center'>
+            {
+                loading ? (
+                    <div className=' flex flex-wrap justify-center h-full w-full items-center max-w-[1000px]'>
+                        <ClipLoader size={50} />
+                    </div> 
+                ):doctorsDetail ? (
+                    doctorsDetail.map((doctor, index) => (
+                        <div key={index}>
+                            <DoctorCard doctor={doctor} count={GetAvgRating(doctor.ratingAndReview)}/>
+                        </div>
+                    ))
+                ) : (
+                <div>No doctors data available.</div>
+                )
+            }
+        </div>
     </div>
   )
 }

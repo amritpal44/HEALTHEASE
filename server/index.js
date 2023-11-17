@@ -7,6 +7,7 @@ const userRoutes = require("./routes/userRoutes");
 const medicineRoutes = require("./routes/medicineRoutes");
 const doctorRoutes = require("./routes/doctorRoutes");
 const profileRoutes = require("./routes/profileRoutes");
+const bookingRoutes = require("./routes/bookingRoutes");
 
 const { cloudinaryConnect } = require('./config/cloudinary');
 const fileUpload = require('express-fileupload');
@@ -44,7 +45,10 @@ app.use(
 )
 
 //allow request from http://localhost:3000
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ 
+    origin: "http://localhost:3000" ,
+    credentials: true,
+}));
 
 
 //setting up routes
@@ -52,6 +56,7 @@ app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/medicine", medicineRoutes);
 app.use("/api/v1/doctor", doctorRoutes);
 app.use("/api/v1/profile", profileRoutes);
+app.use("/api/v1/booking", bookingRoutes);
 
 
 //test

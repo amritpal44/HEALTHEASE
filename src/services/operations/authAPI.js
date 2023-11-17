@@ -209,6 +209,8 @@ export function logout(navigate) {
 
   return (dispatch) => {
 
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
     // dispatch(setToken(null));
     // dispatch(setUser(null));
     //cart data reset pending

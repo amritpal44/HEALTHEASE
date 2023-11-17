@@ -40,6 +40,14 @@ const userSchema = new mongoose.Schema(
         image:{
             type: String
         },
+        notification: {
+            type: Array,
+            default: []
+        },
+        seenotification: {
+            type: Array,
+            default: []
+        }
         // additionalDetails: {
         //     type: mongoose.Schema.Types.ObjectId,
         //     ref: "Profile"

@@ -26,3 +26,8 @@ export const settingsEndpoints = {
     UPDATE_DISPLAY_PICTURE_API: BASE_URL + "/profile/updateDisplayPicture",
     UPDATE_PROFILE_API: BASE_URL + "/profile/updateProfile"
 }
+
+
+export const bookingEndpoints = {
+    BOOK_APPOINTMENT_REQUEST: BASE_URL + "/booking/bookAppointmentRequest"
+}

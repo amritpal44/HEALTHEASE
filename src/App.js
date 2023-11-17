@@ -21,9 +21,13 @@ import PrivateRoute from './components/Core/Auth/PrivateRoute';
 import Cart from './components/Core/Dashboard/Cart/Cart';
 import MyProfile from './components/Core/Dashboard/MyProfile';
 import Error from './pages/Error';
-
+import { useSelector } from 'react-redux';
+import { ACCOUNT_TYPE } from './utils/constants';
+ 
 
 function App() {
+
+  const user = useSelector( (state) => state.profile );
 
   // useEffect(() => {
   //   const observer = new IntersectionObserver((entries) => {
@@ -56,12 +60,12 @@ function App() {
         <Route path="/contact" element={<Contact />} />
 
         
+        {/*********************  AUTH ROUTES  *********************/}
         <Route path="/login" element={
           <PublicRoute>
             <Login/>
           </PublicRoute>
         } />
-
         <Route path='/signup' element={
           <PublicRoute>
             <Signup/>
@@ -73,15 +77,27 @@ function App() {
           </PublicRoute>
         }/>
 
+
         <Route path='/category' element={<Category/>}/>
 
 
-        <Route 
-          path='/doctor/book-appointment/:doctorId'
-          element={<BookingPage/>}
-        />
-        <Route path='/doctors' element={<DoctorList/>}></Route>
 
+        {/*********************  BOOKING ROUTES  *********************/}
+        {/* {
+          user?.user?.accountType === "Patient" && ( */}
+            <>
+              <Route 
+                path='/doctor/book-appointment/:doctorId'
+                element={<BookingPage/>}
+              />
+              <Route path='/doctors' element={<DoctorList/>}></Route>
+            </>
+          {/* )
+        } */}
+
+
+
+        {/*********************  RESET PASSWORD ROUTES  *********************/}
         <Route path='/reset-password' element={
           <ForgotPassword/> 
         }/>
@@ -90,9 +106,8 @@ function App() {
         }/>
 
 
-        {/* .............dashboard routes ............. */}
+        {/**********************  DASHBOARD ROUTES  *********************/}
         <Route element={ <PrivateRoute> <Dashboard /> </PrivateRoute>}> 
-
           <Route path='/dashboard/settings' element={
             <PrivateRoute>
               <Settings/>
@@ -104,7 +119,6 @@ function App() {
               <MyProfile />
             </PrivateRoute>    
           }/>
-
         </Route>
 
 

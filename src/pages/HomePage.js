@@ -75,8 +75,8 @@ const HomePage = () => {
               Book an appointment
             </PrimaryButton>
 
-            <SecondaryButton linkto={"/category"}>
-              Our Specialities
+            <SecondaryButton linkto={"/doctors"}>
+              Our Doctors
             </SecondaryButton>
 
           </div>
