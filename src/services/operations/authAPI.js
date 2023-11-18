@@ -131,9 +131,35 @@ export function login(email, password, navigate){
       
       dispatch(setUser({...response.data.user, image: userImage}));
 
-      localStorage.setItem("user", JSON.stringify({...response.data.user, image: userImage}))
+      // localStorage.setItem("user", JSON.stringify({...response.data.user, image: userImage}))
       
       localStorage.setItem("token", JSON.stringify(response.data.token));
+
+
+      // //*************************************************************************************************** */
+      // if(response.data.user.accountType === "Doctor"){
+      //   try {
+      //     const response = await apiConnector("GET", bookingEndpoints.GET_ALL_APPOINTMENT_REQUEST);
+    
+      //     if(response){
+      //       console.log("response.data.length()", response.data.length);
+      //       dispatch(setAppointmentCount(response.data.length()));
+      //       localStorage.setItem("appointmentCount", JSON.stringify(response.data.length));
+      //     }
+      //     else{
+      //       console.log("didn't get appointmetn list");
+      //     }
+    
+      //   } catch (error) {
+      //     console.log("Cannot fetch appointment List");
+      //     console.log("error: ", error);
+      //   }
+      // }
+
+      // //*************************************************************************************************** */
+
+
+
       
       navigate("/");
       toast.success("Login Successful");

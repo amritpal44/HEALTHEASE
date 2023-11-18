@@ -29,5 +29,8 @@ export const settingsEndpoints = {
 
 
 export const bookingEndpoints = {
-    BOOK_APPOINTMENT_REQUEST: BASE_URL + "/booking/bookAppointmentRequest"
+    BOOK_APPOINTMENT_REQUEST: BASE_URL + "/booking/bookAppointmentRequest",
+    GET_ALL_APPOINTMENT_REQUEST: BASE_URL + "/booking/getAllAppointmentRequest",
+    UPDATE_APPOINTMENT_STATUS: BASE_URL + "/booking/updateAppointmentStatus",
+    DELETE_APPOINTMENT: BASE_URL + "/booking/deleteAppointment"
 }

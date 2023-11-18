@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const otpGenerator = require("otp-generator");
 const patientModel = require("../models/patientModel");
+const appointmentModel = require("../models/appointmentModel");
 
 exports.signup = async (req, res) => {
 
@@ -152,9 +153,12 @@ exports.login = async(req, res) => {
             }
             else if(user.accountType === "Doctor"){
                 const doctorDetail = await doctorModel.findOne({user: user._id});
+                const appointmentDetail = await appointmentModel.find({doctorUserId: user._id});
+                const appointmentCount = appointmentDetail.length;
                 user = {
                     ...user.toObject(),
-                    ...doctorDetail.toObject()
+                    ...doctorDetail.toObject(),
+                    appointmentCount: appointmentCount
                 }
             }
 

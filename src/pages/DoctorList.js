@@ -41,11 +41,15 @@ const DoctorList = () => {
                         <ClipLoader size={50} />
                     </div> 
                 ):doctorsDetail ? (
-                    doctorsDetail.map((doctor, index) => (
-                        <div key={index}>
-                            <DoctorCard doctor={doctor} count={GetAvgRating(doctor.ratingAndReview)}/>
-                        </div>
-                    ))
+                    <div className='flex gap-10 flex-wrap max-w-[1000px]'>
+                        {
+                            doctorsDetail.map((doctor, index) => (
+                                <div key={index}>
+                                    <DoctorCard doctor={doctor} count={GetAvgRating(doctor.ratingAndReview)}/>
+                                </div>
+                            ))
+                        }
+                    </div>
                 ) : (
                 <div>No doctors data available.</div>
                 )

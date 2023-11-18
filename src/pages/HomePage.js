@@ -71,7 +71,7 @@ const HomePage = () => {
           {/* TWO BUTTONS */}
           <div className={`flex justify-around pt-10 text-slate-200 text-[18px] font-bold ${hiddenClass} ${Delay2}`}>
 
-            <PrimaryButton linkto={"/signup"}>
+            <PrimaryButton linkto={"/doctors"}>
               Book an appointment
             </PrimaryButton>
 

@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux'
 import { ACCOUNT_TYPE } from '../../utils/constants'
 
 import {AiOutlineShoppingCart} from "react-icons/ai"
+import { FaBell } from "react-icons/fa";
+
 import ProfileDropdown from '../Core/Auth/ProfileDropdown'
 
 const Navbar = () => {
@@ -15,7 +17,6 @@ const Navbar = () => {
   const {token} = useSelector( (state) => state.auth );
   const {user} = useSelector( (state) => state.profile );
   const {totalItems} = useSelector( (state) => state.cart );
-
 
 
   return (
@@ -48,6 +49,21 @@ const Navbar = () => {
                 totalItems >= 0 && (
                   <span className='absolute -translate-y-9 translate-x-5'>
                     {totalItems}
+                  </span>
+                )
+              }
+            </Link>
+          )
+        }
+
+        {
+          user && user?.accountType === ACCOUNT_TYPE.DOCTOR && (
+            <Link to={"/appointment-request"} className='relative text-yellow-400'>
+              <FaBell />
+              {
+                user.appointmentCount > 0 && (
+                  <span className='absolute -translate-y-9 translate-x-5 text-sm text-white '>
+                    {user.appointmentCount}
                   </span>
                 )
               }

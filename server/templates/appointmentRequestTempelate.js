@@ -66,14 +66,14 @@ const appointmentBookingTemplate = (user, date, time, url) => {
 	
 	<body>
 		<div class="container">
-        <a href="https://studynotion-edtech-project.vercel.app"><img class="logo"
+        <a href="http://localhost:3000/"><img class="logo"
                 src="https://i.ibb.co/PQbfRnf/Screenshot-2023-10-14-132711.png" alt="HealthEase Logo"></a>
             <div class="message">New Appointment Request</div>
 			<div class="body">
 				<p>Dear User</p>
 				<p>${user.firstName} ${user.lastName} has requested for a appointment.</p>
 				<h2 class="highlight">On ${time} ${date}</h2>
-				<p>To accept the appointment click on the following link.</p>
+				<p>Open HealthEase to accept the appointment request.</p>
                 <p>${url}</p>
 			</div>
 			<div class="support">If you have any questions or need assistance, please feel free to reach out to us at <a

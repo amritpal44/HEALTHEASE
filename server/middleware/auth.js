@@ -12,10 +12,10 @@ exports.auth = async (req, res, next) => {
 		var token;
 		try {
 			token =
-				req.cookies.token ||
-				req.body.token ||
+				req?.cookies?.token ||
+				req?.body?.token ||
 				req.header("Authorization").replace("Bearer ", "");
-			console.log(token)
+			// console.log(token)
 			
 		} catch (error) {
 			return res.status(401).json({
@@ -32,7 +32,7 @@ exports.auth = async (req, res, next) => {
 		try {
 			// Verifying the JWT using the secret key stored in environment variables
 			const decode = await jwt.verify(token, process.env.JWT_SECRET);
-			console.log("decode from auth middleware: ", decode);
+			// console.log("decode from auth middleware: ", decode);
 			// Storing the decoded JWT payload in the request object for further use
 			req.user = decode;
 		} catch (error) {
@@ -89,9 +89,9 @@ exports.isAdmin = async (req, res, next) => {
 exports.isDoctor = async (req, res, next) => {
 	try {
 		const userDetails = await User.findOne({ email: req.user.email });
-		console.log(userDetails);
+		// console.log(userDetails);
 
-		console.log(userDetails.accountType);
+		// console.log(userDetails.accountType);
 
 		if (userDetails.accountType !== "Doctor") {
 			return res.status(401).json({

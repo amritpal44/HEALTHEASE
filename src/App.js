@@ -1,5 +1,5 @@
 
-import { Routes,Route } from 'react-router-dom';
+import { Routes,Route, useNavigate, Navigate } from 'react-router-dom';
 import './App.css';
 import HomePage from './pages/HomePage';
 // import Navbar from './components/Common/Navbar';
@@ -23,11 +23,14 @@ import MyProfile from './components/Core/Dashboard/MyProfile';
 import Error from './pages/Error';
 import { useSelector } from 'react-redux';
 import { ACCOUNT_TYPE } from './utils/constants';
+import Notification from './pages/Notification';
  
 
 function App() {
 
   const user = useSelector( (state) => state.profile );
+
+  const navigate = useNavigate();
 
   // useEffect(() => {
   //   const observer = new IntersectionObserver((entries) => {
@@ -83,8 +86,8 @@ function App() {
 
 
         {/*********************  BOOKING ROUTES  *********************/}
-        {/* {
-          user?.user?.accountType === "Patient" && ( */}
+        {
+          user?.user?.accountType === "Patient" && (
             <>
               <Route 
                 path='/doctor/book-appointment/:doctorId'
@@ -92,8 +95,18 @@ function App() {
               />
               <Route path='/doctors' element={<DoctorList/>}></Route>
             </>
-          {/* )
-        } */}
+          )
+        }
+        {
+          user?.user?.accountType === "Doctor" && (
+            <>
+              <Route 
+                path='/appointment-request'
+                element={<Notification />}
+              />
+            </>
+          )
+        }
 
 
 
