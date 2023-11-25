@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { sidebarLinks } from '../../../data/dashboard-links'
 import SidebarLink from './SidebarLink'
-import { ClipLoader } from 'react-spinners'
+// import { ClipLoader } from 'react-spinners'
 
 import { VscSignOut } from "react-icons/vsc"
 import { logout } from '../../../services/operations/authAPI'

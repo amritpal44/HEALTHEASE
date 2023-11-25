@@ -4,7 +4,7 @@ import Tab from '../components/Common/Tab'
 import { ACCOUNT_TYPE } from '../utils/constants'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setSignupData } from "../slices/authSlice"
 import { sendOtp } from '../services/operations/authAPI'
 

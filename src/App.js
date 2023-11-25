@@ -18,19 +18,21 @@ import UpdatePassword from './pages/UpdatePassword';
 import Dashboard from './pages/Dashboard';
 import Settings from './components/Core/Dashboard/Settings';
 import PrivateRoute from './components/Core/Auth/PrivateRoute';
-import Cart from './components/Core/Dashboard/Cart/Cart';
+
 import MyProfile from './components/Core/Dashboard/MyProfile';
 import Error from './pages/Error';
 import { useSelector } from 'react-redux';
-import { ACCOUNT_TYPE } from './utils/constants';
+// import { ACCOUNT_TYPE } from './utils/constants';
 import Notification from './pages/Notification';
+import Cart from './components/Core/Dashboard/Cart';
+import Medicines from './pages/Medicines';
  
 
 function App() {
 
   const user = useSelector( (state) => state.profile );
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // useEffect(() => {
   //   const observer = new IntersectionObserver((entries) => {
@@ -132,9 +134,12 @@ function App() {
               <MyProfile />
             </PrivateRoute>    
           }/>
+
         </Route>
 
+        <Route path='/cart' element={<Cart />}/>
 
+        <Route path='/medicines' element={<Medicines/>} />
 
         <Route path='*' element={<Error/>}/>
       

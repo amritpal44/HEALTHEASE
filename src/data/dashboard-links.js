@@ -9,9 +9,9 @@ export const sidebarLinks = [
   },
   {
     id: 2,
-    name: "Dashboard",
-    path: "/dashboard/doctor",
-    type: ACCOUNT_TYPE.DOCTOR,
+    name: "Doctors",
+    path: "doctors",
+    type: ACCOUNT_TYPE.PATIENT,
     icon: "VscDashboard",
   },
   {
@@ -30,15 +30,15 @@ export const sidebarLinks = [
   },
   {
     id: 5,
-    name: "Enrolled Courses",
-    path: "/dashboard/appointments-pending",
+    name: "Appointment Requests",
+    path: "/dashboard/appointment-request",
     type: ACCOUNT_TYPE.DOCTOR,
     icon: "VscMortarBoard",
   },
   {
     id: 7,
     name: "Cart",
-    path: "/dashboard/cart",
+    path: "/cart",
     type: ACCOUNT_TYPE.PATIENT,
     icon: "VscArchive",
   },

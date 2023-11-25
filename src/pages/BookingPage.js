@@ -19,6 +19,7 @@ const BookingPage = () => {
   const params = useParams();
 
   var doctorUserId;
+  var image;
 
   if (doctorDetail) {
     doctorUserId = doctorDetail.data.user._id;
@@ -33,6 +34,7 @@ const BookingPage = () => {
       });
       if (response) {
         setDoctorDetail(response.data);
+        image = response.data.data.user?.image[0]
       }
     } catch (error) {
       console.log("Cannot fetch doctor detail");
@@ -90,42 +92,44 @@ const BookingPage = () => {
           <ClipLoader size={50} />
         </div>
       ) : (
-        <div className="flex min-w-[500px] justify-center bg-[#f3f8ff]">
-          <div>
-            <h1>Booking Page</h1>
-            <h4>
+        <div className="flex min-w-[500px] justify-center mt-16">
+          <div className='flex flex-col items-center border p-4 py-6 rounded-[2rem] shadow-md bg-[#f3f8ff] min-w-[600px]'>
+
+            <img src={image}/>
+            <h1 className='text-3xl'>Booking Page</h1>
+            <h4 className='mt-10 text-lg '>
               Dr.{doctorDetail.data.user.firstName} {doctorDetail.data.user.lastName}
             </h4>
-            <h4>
+            <h4 className='text-lg'>
               Fees : {doctorDetail.data.fee}
             </h4>
-            <h4>
+            {/* <h4>
               Timings : {doctorDetail?.timings && doctorDetail?.timings[0]} -{" "}
               {doctorDetail?.timings && doctorDetail?.timings[1]}{" "}
-            </h4>
-            <form onSubmit={handleBooking} className="flex flex-col w-60">
+            </h4> */}
+            <form onSubmit={handleBooking} className="flex flex-col w-60 ">
               <label>
-                <p>Date</p>
+                <p className='text-lg font-bold'>Date</p>
                 <input
                   type='date'
                   name='date'
                   value={moment(formData.date, 'DD/MM/YY').format('YYYY-MM-DD')}
                   onChange={handleOnChange}
-                  className='m-2 px-10 py-2 rounded-full shadow-md'
+                  className='px-10 py-2 rounded-full shadow-md w-full'
                 />
               </label>
               <label>
-                <p>Time</p>
+                <p className='text-lg font-bold mt-4'>Time</p>
                 <input
                   type='time'
                   name='time'
                   value={formData.time}
                   onChange={handleOnChange}
-                  className='mt-3 px-10 py-2 rounded-full shadow-md'
+                  className=' px-10 py-2 rounded-full shadow-md w-full'
                 />
               </label>
 
-              <button type='submit' className='bg-[#3d65ff] rounded-full px-[38px] py-[20px] cursor-pointer hover:-translate-y-1 ease-linear duration-200'>
+              <button type='submit' className='bg-[#3d65ff] text-lg text-slate-200 font-bold mt-6 rounded-full px-[38px] py-[15px] cursor-pointer hover:-translate-y-1 ease-linear duration-200'>
                 Book Now
               </button>
             </form>

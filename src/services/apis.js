@@ -34,3 +34,12 @@ export const bookingEndpoints = {
     UPDATE_APPOINTMENT_STATUS: BASE_URL + "/booking/updateAppointmentStatus",
     DELETE_APPOINTMENT: BASE_URL + "/booking/deleteAppointment"
 }
+
+
+export const medicineEndpoints = {
+    MEDICINE_PAYMENT_API: BASE_URL + "/payment/capturePayment",
+    MEDICINE_VERIFY_API: BASE_URL + "/payment/verifyPayment",
+    SEND_PAYMENT_SUCCESS_EMAIL_API: BASE_URL + "/payment/sendPaymentSuccessEmail",
+
+    GET_ALL_MEDICINES: BASE_URL + "/medicine/getAllMedicine"
+}

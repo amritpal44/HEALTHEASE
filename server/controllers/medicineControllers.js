@@ -111,7 +111,13 @@ exports.getAllMedicine = async(req, res) => {
             }
         )
         .populate("category")
-        .populate("vendor")
+        .populate({
+            path: "vendor",
+            populate: {
+                path: "user",
+                select: "-password"
+            }
+        })
         .exec()
         //.populate("RatingAndReview")
     
