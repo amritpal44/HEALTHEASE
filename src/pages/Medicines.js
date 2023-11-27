@@ -18,7 +18,7 @@ const Medicines = () => {
     try {
       const response = await apiConnector("GET", medicineEndpoints.GET_ALL_MEDICINES);
 
-      console.log(response.data.data)
+      // console.log(response.data.data)
 
       setMedicines(response.data.data)
 
@@ -40,7 +40,7 @@ const Medicines = () => {
           loading ? (<div className='w-screen flex h-[555px] justify-center items-center'>
             <ClipLoader size={50} />
           </div>) : (
-            <div>
+            <div >
               {
                 medicines.map((medicine) => (
                   <MedicineCard key={medicine._id} medicine={medicine} />

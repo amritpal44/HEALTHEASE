@@ -75,7 +75,8 @@ const appointmentAcceptedTemplate = (user, date, time) => {
 				<h2 class="highlight">Appointment scheduled on ${time} ${date}</h2>
 			</div>
 			<div class="support">If you have any questions or need assistance, please feel free to reach out to us at <a
-					href="mailto:healtheaseofficial@gmail.com">healtheaseofficial@gmail.com</a>. We are here to help!</div>
+				href="mailto:healtheaseofficial@gmail.com">healtheaseofficial@gmail.com</a>. We are here to help!
+			</div>
 		</div>
 	</body>
 	

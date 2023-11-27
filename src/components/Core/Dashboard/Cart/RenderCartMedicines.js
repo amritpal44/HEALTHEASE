@@ -9,7 +9,7 @@ export default function RenderCartMedicines() {
   const { cart } = useSelector((state) => state.cart)
   const dispatch = useDispatch()
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="flex flex-1 flex-col mt-3">
       {cart.map((medicine, indx) => (
         <div
           key={medicine._id}
@@ -21,7 +21,7 @@ export default function RenderCartMedicines() {
             <img
               src={medicine?.images[0]}
               alt={medicine?.name}
-              className="h-[148px] w-[220px] rounded-lg object-cover"
+              className="h-[148px] w-[220px] rounded-lg object-contain "
             />
             <div className="flex flex-col space-y-1">
               <p className="text-lg font-medium text-richblack-5">
@@ -50,12 +50,12 @@ export default function RenderCartMedicines() {
           <div className="flex flex-col items-end space-y-2">
             <button
               onClick={() => dispatch(removeFromCart(medicine._id))}
-              className="flex items-center gap-x-1 rounded-md border border-richblack-600 bg-richblack-700 py-3 px-[12px] text-pink-200"
+              className="flex items-center gap-x-1 font-bold rounded  py-[7px] px-[12px] border-2 hover:text-red-600 bg-red-600 text-slate-200 hover:border-black hover:border-2 hover:bg-white"
             >
               <RiDeleteBin6Line />
               <span>Remove</span>
             </button>
-            <p className="mb-6 text-3xl font-medium text-yellow-100">
+            <p className="mb-6 text-3xl font-medium">
               ₹ {medicine?.price}
             </p>
           </div>

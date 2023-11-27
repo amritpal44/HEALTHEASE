@@ -1,51 +1,45 @@
 const { instance } = require("../config/razorpay")
-const Course = require("../models/Course")
 const crypto = require("crypto")
-const User = require("../models/User")
 const mailSender = require("../utils/mailSender")
 const mongoose = require("mongoose")
 
+const medicineModel = require("../models/medicineModel")
+const prescriptionModel = require("../models/prescriptionModel")
+const userModel = require("../models/userModel")
+
 const {
   courseEnrollmentEmail,
-} = require("../mail/templates/courseEnrollmentEmail")
+} = require("../templates/courseEnrollmentEmail")
 
-const { paymentSuccessEmail } = require("../mail/templates/paymentSuccessEmail")
-const CourseProgress = require("../models/CourseProgress")
+const { paymentSuccessEmail } = require("../templates/paymentSuccessEmail")
+// const CourseProgress = require("../models/CourseProgress")
 
 // Capture the payment and initiate the Razorpay order
 exports.capturePayment = async (req, res) => {
-  const { courses } = req.body
-  const userId = req.user.id
-  if (courses.length === 0) {
-    return res.json({ success: false, message: "Please Provide Course ID" })
+  const { medicines } = req.body
+
+  if (medicines.length === 0) {
+    return res.json({ success: false, message: "Please Provide Medicine ID" })
   }
 
   let total_amount = 0
 
-  for (const course_id of courses) {
-    let course
-    try {
-      // Find the course by its ID
-      course = await Course.findById(course_id)
+  for (const medicine_id of medicines) {
+    let medicine
 
-      // If the course is not found, return an error
-      if (!course) {
+    try {
+      medicine = await medicineModel.findById(medicine_id);
+
+      if (!medicine) {
         return res
-          .status(200)
+          .status(404)
           .json({ success: false, message: "Could not find the Course" })
       }
 
-      // Check if the user is already enrolled in the course
-      const uid = new mongoose.Types.ObjectId(userId)
-      if (course.studentsEnroled.includes(uid)) {
-        return res
-          .status(200)
-          .json({ success: false, message: "Student is already Enrolled" })
-      }
+      total_amount += medicine.price
 
-      // Add the price of the course to the total amount
-      total_amount += course.price
     } catch (error) {
+
       console.log(error)
       return res.status(500).json({ success: false, message: error.message })
     }
@@ -61,7 +55,7 @@ exports.capturePayment = async (req, res) => {
     // Initiate the payment using Razorpay
     const paymentResponse = await instance.orders.create(options)
     console.log(paymentResponse)
-    res.json({
+    res.status(200).json({
       success: true,
       data: paymentResponse,
     })
@@ -78,7 +72,7 @@ exports.verifyPayment = async (req, res) => {
   const razorpay_order_id = req.body?.razorpay_order_id
   const razorpay_payment_id = req.body?.razorpay_payment_id
   const razorpay_signature = req.body?.razorpay_signature
-  const courses = req.body?.courses
+  const medicines = req.body?.medicines
 
   const userId = req.user.id
 
@@ -86,10 +80,10 @@ exports.verifyPayment = async (req, res) => {
     !razorpay_order_id ||
     !razorpay_payment_id ||
     !razorpay_signature ||
-    !courses ||
+    !medicines ||
     !userId
   ) {
-    return res.status(200).json({ success: false, message: "Payment Failed" })
+    return res.status(401).json({ success: false, message: "Payment Failed, input fields are missing" })
   }
 
   let body = razorpay_order_id + "|" + razorpay_payment_id
@@ -100,11 +94,11 @@ exports.verifyPayment = async (req, res) => {
     .digest("hex")
 
   if (expectedSignature === razorpay_signature) {
-    await enrollStudents(courses, userId, res)
+    await enrollStudents(medicines, userId, res)
     return res.status(200).json({ success: true, message: "Payment Verified" })
   }
 
-  return res.status(200).json({ success: false, message: "Payment Failed" })
+  return res.status(500).json({ success: false, message: "Payment Failed" })
 }
 
 // Send Payment Success Email
@@ -120,7 +114,7 @@ exports.sendPaymentSuccessEmail = async (req, res) => {
   }
 
   try {
-    const enrolledStudent = await User.findById(userId)
+    const enrolledStudent = await userModel.findById(userId)
 
     await mailSender(
       enrolledStudent.email,
@@ -151,7 +145,7 @@ const enrollStudents = async (courses, userId, res) => {
   for (const courseId of courses) {
     try {
       // Find the course and enroll the student in it
-      const enrolledCourse = await Course.findOneAndUpdate(
+      const enrolledCourse = await prescriptionModel.findOneAndUpdate(
         { _id: courseId },
         { $push: { studentsEnroled: userId } },
         { new: true }
@@ -164,13 +158,13 @@ const enrollStudents = async (courses, userId, res) => {
       }
       console.log("Updated course: ", enrolledCourse)
 
-      const courseProgress = await CourseProgress.create({
+      const courseProgress = await prescriptionModel.create({
         courseID: courseId,
         userId: userId,
         completedVideos: [],
       })
       // Find the student and add the course to their list of enrolled courses
-      const enrolledStudent = await User.findByIdAndUpdate(
+      const enrolledStudent = await userModel.findByIdAndUpdate(
         userId,
         {
           $push: {

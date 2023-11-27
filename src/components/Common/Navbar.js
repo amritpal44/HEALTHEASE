@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from "../../assests/logo/healthease.png"
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { NavbarLinks } from '../../data/navbar-links'
 import { useSelector } from 'react-redux'
 
@@ -10,6 +10,7 @@ import {AiOutlineShoppingCart} from "react-icons/ai"
 import { FaBell } from "react-icons/fa";
 
 import ProfileDropdown from '../Core/Auth/ProfileDropdown'
+import { ScrollLink } from 'react-scroll'
 
 const Navbar = () => {
 
@@ -18,9 +19,11 @@ const Navbar = () => {
   const {user} = useSelector( (state) => state.profile );
   const {totalItems} = useSelector( (state) => state.cart );
 
+  const location = useLocation();
+
 
   return (
-    <div className='w-screen bg-black font-clarity-city flex justify-evenly p-3'>
+    <div id='#navbar' className='w-screen bg-black font-clarity-city flex justify-evenly p-3'>
       
       <Link to={"/"}>
         <div className='flex items-center text-slate-200 text-5xl gap-1'>
@@ -32,14 +35,37 @@ const Navbar = () => {
 
       {/* LINKS */}
       <div className='flex gap-8 text-slate-200 text-xl items-center'> 
-        {
+        {/* {
           NavbarLinks.map( (link, index) => (
               <Link to={link?.path} key={index}>
-                <div> {link?.title} </div>
+                <div> <a href={link?.scrollto}> {link?.title} </a></div>
               </Link>
             )
           )
+        } */}
+
+        {
+          location.pathname === "/" ? (
+            NavbarLinks.map( (link, index) => (
+                
+                  <div key={index}>
+                    <a href={link?.scrollto}>
+                      {link?.title} 
+                    </a>
+                  </div>
+                
+              )
+            )
+          ) : (
+            NavbarLinks.map( (link, index) => (
+                <Link to={link?.path} key={index}>
+                  <div> {link?.title} </div>
+                </Link>
+              )
+            )
+          )
         }
+
 
         {
           user && user?.accountType === ACCOUNT_TYPE.PATIENT && (

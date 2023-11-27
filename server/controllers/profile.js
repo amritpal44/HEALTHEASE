@@ -44,12 +44,14 @@ exports.updateProfile = async (req, res) => {
       gender = "",
       fee = 0,
       specialization = "",
-      about = ""
+      about = "",
+      address = "",
+      pincode = 0
     } = req.body
     const id = req.user.id
 
     // Find the profile by id
-    const userDetails = await userModel.findById(id);
+    var userDetails = await userModel.findById(id);
 
     var profile;
     var updatedProfileDetails;
@@ -60,9 +62,12 @@ exports.updateProfile = async (req, res) => {
       profile.dateOfBirth = dateOfBirth;
       profile.gender = gender;
       profile.about = about;
+      // userDetails.address = address;
+      // userDetails.pincode = pincode;
 
       // Save the updated profile
       await profile.save()
+      // await userDetails.save()
 
       updatedProfileDetails = await patientModel.findOne({user: id});
 
@@ -74,9 +79,12 @@ exports.updateProfile = async (req, res) => {
       profile.dateOfBirth = dateOfBirth;
       profile.about = about;
       profile.gender = gender;
+      // userDetails.address = address;
+      // userDetails.pincode = pincode;
 
       // Save the updated profile
       await profile.save()
+      // await userDetails.save()
 
       updatedProfileDetails = await doctorModel.findOne({user: id});
     }
@@ -85,6 +93,8 @@ exports.updateProfile = async (req, res) => {
     const user = await userModel.findByIdAndUpdate(id, {
       firstName,
       lastName,
+      address,
+      pincode
     })
     await user.save()
 

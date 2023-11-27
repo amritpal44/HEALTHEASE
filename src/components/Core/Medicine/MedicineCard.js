@@ -22,6 +22,10 @@ const MedicineCard = ({ medicine }) => {
   };
 
   const handleAddToCart = () => {
+    if(!user){
+      navigate("/login");
+      return alert("Need to Login First");
+    }
     dispatch(addToCart(medicine))
   }
 
@@ -30,18 +34,18 @@ const MedicineCard = ({ medicine }) => {
   };
 
   return (
-    <div className='max-w-[90%] mx-auto rounded overflow-hidden shadow-lg my-4'>
-      <div className='flex'>
+    <div className='max-w-[90%] mx-auto rounded overflow-hidden shadow-lg my-8'>
+      <div className='flex items-center'>
         <img
           src={medicine.images[currentImageIndex]}
           alt={medicine.name}
-          className='w-1/2 h-40 object-cover bg-transparent'
+          className='object-contain w-1/2 h-44 bg-transparent'
         />
         <div className='w-1/2 px-6 py-4'>
           <div className='font-bold text-xl mb-2'>{medicine.name}</div>
           <p className='text-gray-700 text-base'>{medicine.description}</p>
           <p className='text-gray-700 text-base'>
-            <strong>Price:</strong> ${medicine.price}
+            <strong>Price:</strong> ₹{medicine.price}
           </p>
           <p className='text-gray-700 text-base'>
             <strong>Stock:</strong> {medicine.stock}
@@ -71,9 +75,9 @@ const MedicineCard = ({ medicine }) => {
             </div>
           )}
 
-          <div className='flex gap-3 mt-3'>
-            <button onClick={handleAddToCart} className='bg-[#3d65ff] text-slate-200 font-medium text-lg rounded-lg px-3 py-1 cursor-pointer hover:-translate-y-1 ease-linear duration-200'>Add to Cart</button>
-                <button className='bg-white font-medium rounded-lg border border-black bottom-[2px] text-lg px-[12px] py-[4px] cursor-pointer hover:-translate-y-1 hover:bg-yellow-300 hover:text-slate-950 ease-linear duration-200'>Buy Now</button>
+          <div className='flex gap-5 mt-3'>
+            <button onClick={handleAddToCart} className='bg-[#3d65ff] text-slate-200 font-semibold text-lg rounded px-7 py-1 cursor-pointer hover:-translate-y-1 ease-linear duration-200'>Add to Cart</button>
+            <button className=' bottom-[2px] text-lg cursor-pointer hover:-translate-y-1 hover:text-slate-950 ease-linear duration-200 bg-yellow-500 font-semibold py-2 px-8 rounded'>Buy Now</button>
           </div>
         </div>
       </div>

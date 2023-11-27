@@ -43,3 +43,7 @@ export const medicineEndpoints = {
 
     GET_ALL_MEDICINES: BASE_URL + "/medicine/getAllMedicine"
 }
+
+export const contactusEndpoint = {
+    CONTACT_US_API: BASE_URL + "/reach/contact",
+}

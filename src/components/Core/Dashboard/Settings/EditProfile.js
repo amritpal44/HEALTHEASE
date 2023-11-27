@@ -23,6 +23,7 @@ export default function EditProfile() {
 
   const submitProfileForm = async (data) => {
     // console.log("Form Data - ", data)
+    
     try {
       dispatch(updateProfile(token, data))
     } catch (error) {
@@ -134,6 +135,52 @@ export default function EditProfile() {
             </div>
           </div>
 
+
+          <div className="flex flex-col gap-5 lg:flex-row">
+            {/* pincode */}
+            <div className="flex flex-col gap-2 lg:w-[48%]">
+              <label htmlFor="pincode" className="lable-style">
+                Pin Code
+              </label>
+              <input
+                type="number"
+                name="pincode"
+                id="pincode"
+                placeholder="Enter Pin Code"
+                className="form-style"
+                {...register("pincode", { required: true })}
+                defaultValue={user?.pincode}
+              />
+              {errors.pincode && (
+                <span className="-mt-1 text-[12px] text-yellow-100">
+                  Please enter Pin Code.
+                </span>
+              )}
+            </div>
+
+
+            {/* address */}
+            <div className="flex flex-col gap-2 lg:w-[48%]">
+              <label htmlFor="address" className="lable-style">
+                Address
+              </label>
+              <input
+                type="text"
+                name="address"
+                id="address"
+                placeholder="Enter your full Address"
+                className="form-style"
+                {...register("address", { required: true })}
+                defaultValue={user?.address}
+              />
+              {errors.address && (
+                <span className="-mt-1 text-[12px] text-yellow-100">
+                  Please enter your Current Address.
+                </span>
+              )}
+            </div>
+          </div>
+
           {
             user.accountType === "Doctor" ? (
               <div>
@@ -189,7 +236,7 @@ export default function EditProfile() {
               
               user.accountType === "Patient" ? (
                 <div>
-
+                  
                 </div>
               ): (
                 <div>

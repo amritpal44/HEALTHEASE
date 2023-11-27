@@ -47,6 +47,12 @@ const userSchema = new mongoose.Schema(
         seenotification: {
             type: Array,
             default: []
+        },
+        address: {
+            type: String
+        },
+        pincode: {
+            type: Number
         }
         // additionalDetails: {
         //     type: mongoose.Schema.Types.ObjectId,

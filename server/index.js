@@ -9,6 +9,7 @@ const doctorRoutes = require("./routes/doctorRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
+const contactRoutes = require("./routes/contactRoutes");
 
 const { cloudinaryConnect } = require('./config/cloudinary');
 const fileUpload = require('express-fileupload');
@@ -58,7 +59,8 @@ app.use("/api/v1/medicine", medicineRoutes);
 app.use("/api/v1/doctor", doctorRoutes);
 app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/booking", bookingRoutes);
-app.use("/api/v1/payment", paymentRoutes)
+app.use("/api/v1/payment", paymentRoutes);
+app.use("/api/v1/reach", contactRoutes);
 
 
 //test

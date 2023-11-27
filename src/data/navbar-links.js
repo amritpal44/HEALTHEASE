@@ -1,14 +1,17 @@
 export const NavbarLinks = [
     {
         title: "Home",
-        path: "/"
+        path: "/",
+        scrollto: "#navbar"
     },
     {
         title: "About Us",
-        path: "/about"
+        path: "/",
+        scrollto: "#aboutus"
     },
     {
         title: "Contact Us",
-        path: "/contact"
+        path: "/",
+        scrollto: "#contactus"
     },
 ]

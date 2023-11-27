@@ -68,22 +68,28 @@ const MyProfile = () => {
                 <div className="flex max-w-[900px] justify-between">
                     <div className="flex flex-col gap-y-5">
                         <div>
-                        <p className="mb-2 text-sm text-slate-600">First Name</p>
-                        <p className="text-l font-medium ">
-                            {user?.firstName}
-                        </p>
+                            <p className="mb-2 text-sm text-slate-600">First Name</p>
+                            <p className="text-l font-medium ">
+                                {user?.firstName}
+                            </p>
                         </div>
                         <div>
-                        <p className="mb-2 text-sm text-slate-600">Email</p>
-                        <p className="text-l font-medium ">
-                            {user?.email}
-                        </p>
+                            <p className="mb-2 text-sm text-slate-600">Email</p>
+                            <p className="text-l font-medium ">
+                                {user?.email}
+                            </p>
                         </div>
                         <div>
-                        <p className="mb-2 text-l text-slate-600">Gender</p>
-                        <p className="text-sm font-medium ">
-                            {user?.gender ?? "Add Gender"}
-                        </p>
+                            <p className="mb-2 text-l text-slate-600">Gender</p>
+                            <p className="text-sm font-medium ">
+                                {user?.gender ?? "Add Gender"}
+                            </p>
+                        </div>
+                        <div>
+                            <p className="mb-2 text-l text-slate-600">Pin Code</p>
+                            <p className="text-sm font-medium ">
+                                {user?.pincode ?? "Add Pin Code"}
+                            </p>
                         </div>
                     </div>
                     <div className="flex flex-col gap-y-5">
@@ -104,6 +110,12 @@ const MyProfile = () => {
                             <p className="text-sm font-medium ">
                                 {formattedDate(user?.dateOfBirth) ??
                                 "Add Date Of Birth"}
+                            </p>
+                        </div>
+                        <div>
+                            <p className="mb-2 text-l text-slate-600">Address</p>
+                            <p className="text-sm font-medium ">
+                                {user?.address ?? "Add Address"}
                             </p>
                         </div>
                     </div>
