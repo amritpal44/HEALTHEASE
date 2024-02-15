@@ -44,7 +44,7 @@ const Navbar = () => {
           )
         } */}
 
-        {
+        {/* {
           location.pathname === "/" ? (
             NavbarLinks.map( (link, index) => (
                 
@@ -64,6 +64,14 @@ const Navbar = () => {
               )
             )
           )
+        } */}
+
+        {
+          NavbarLinks.map( (link, index) => (
+            <Link to={link?.path} key={index}>
+              <div> {link?.title} </div>
+            </Link>
+          ))
         }
 
 
