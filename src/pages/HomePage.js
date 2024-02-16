@@ -51,153 +51,144 @@ const HomePage = () => {
 
 
   return (
-    <div className='relative'>
+    <div className='relative '>
 
       <Navbar />
 
       {/* SECTION 1 */}
-      <div className='relative flex flex-col w-[99.6%] justify-center items-center mb-24'>
+      <div className='relative flex flex-wrap flex-col w-full justify-center -z-10 items-center mb-24'>
 
-        <img className="absolute h- -z-10 object-cover rounded-[4rem] top-0 -translate-y-28 " src={homebuildings} alt='home page background'/>
-        
-        {/* WELCOME DIV */}
-        <div className= {`mt-36 w-[35rem] flex flex-col`}>
+  <img className="absolute h-3/4 w-full object-cover rounded-xl sm:rounded-[4rem] -z-10  top-0 -translate-y-28" src={homebuildings} alt='home page background'/>
 
-          <div className={`flex flex-col justify-center items-center text-center text-slate-100 `}>
+  {/* WELCOME DIV */}
+  <div className={`mt-2 sm:mt-36 w-full sm:w-[35rem] flex flex-col my-5 `}>
 
-            <h1 className={`font-sans text-2xl font-bold ${hiddenClass}`}>
-              WELCOME TO HEALTHEASE
-            </h1>
+    <div className={`flex flex-col justify-center items-center text-center text-slate-100 m-2`}>
 
-            <h1 className= {`text-[68px] font-bold pt-7 ${hiddenClass} ${Delay1}`}>
-              Holistic wellness for optimal living
-            </h1>
+      <h1 className={`font-sans text-2xl font-bold  ${hiddenClass}`}>
+        WELCOME TO HEALTHEASE
+      </h1>
 
-            <p className= {`text-[18px] text-sm ${hiddenClass} ${Delay1}`}>
-              Our platform is your gateway to a healthier and more fulfilling life. Discover a comprehensive approach to wellness that encompasses your mind, body, and spirit.
-            </p>
+      <h1 className={`text-6xl font-bold pt-2 sm:pt-7 p-4 ${hiddenClass} ${Delay1}`}>
+        Holistic wellness for optimal living
+      </h1>
 
-          </div>
+      <p className={`text-[16px] sm:text-[18px] text-sm ${hiddenClass} ${Delay1}`}>
+        Our platform is your gateway to a healthier and more fulfilling life. Discover a comprehensive approach to wellness that encompasses your mind, body, and spirit.
+      </p>
 
-          {/* TWO BUTTONS */}
-          <div className={`flex justify-around pt-10 text-slate-200 text-[18px] font-bold ${hiddenClass} ${Delay2}`}>
+    </div>
 
-            <PrimaryButton linkto={"/doctors"}>
-              Book an appointment
-            </PrimaryButton>
+    {/* TWO BUTTONS */}
+    <div className={`flex flex-col sm:flex-row justify-center sm:justify-around pt-4 p-5 sm:pt-10 text-slate-200 text-lg font-bold ${hiddenClass} ${Delay2}`}>
 
-            <SecondaryButton linkto={"/medicines"}>
-              Buy Medicines
-            </SecondaryButton>
+      <PrimaryButton linkto={"/doctors"}>
+        Book an appointment
+      </PrimaryButton>
 
-          </div>
-        </div>
+      <SecondaryButton className=''linkto={"/medicines"}>
+        Buy Medicines
+      </SecondaryButton>
 
+    </div>
+  </div>
 
-        {/* BOOKING DIV */}
-        <div className='mx-[24px] mt-36 max-w-7xl px-[4vw] py-[100px] pb-[40px] rounded-[4rem] bg-[#f3f8ff] flex justify-between font-clarity-city gap-12'>
-          <div className={`${hiddenClass} max-w-lg pb-5 mt-7`}>
-            <h1 className='font-medium text-[18px] text-blue-600'>BOOKING</h1>
-            <h2 className='font-bold text-[54px]'>Let us take care of your health</h2>
-            <p className='font-medium text-[18px] text-slate-500'>Reach out to us via phone or email. Our team is ready to answer your questions and address your healthcare needs.</p>
-          </div>
+  {/* BOOKING DIV */}
+  <div className='m-4 p-3 md:mt-36 max-w-full md:max-w-7xl px-[4vw] py-[50px] md:py-[100px] pb-[40px] 
+  rounded-full sm:rounded-[4rem] bg-[#f3f8ff] flex flex-col sm:flex-row justify-between font-clarity-city gap-4 sm:gap-12'>
+    <div className={`${hiddenClass} w-screen-xl sm:max-w-lg pb-5 mt-4 sm:mt-7 p-3`}>
+      <h1 className='font-medium text-xl  text-blue-600 p-2 px-5'>BOOKING</h1>
+      <h2 className='font-bold text-3xl md:text-5xl text-center px-4 p-3'>Let us take care of your health</h2>
+      <p className='font-medium text-lg md:text-3lg p-1 text-slate-500'>Reach out to us via phone or email. Our team is ready to answer your questions and address your healthcare needs.</p>
+    </div>
 
-          <div className={`${hiddenClass} ${Delay1}`}>
-            <img src={globe} alt='globe' className='w-[100px]'/>
+    <div className={`${hiddenClass} ${Delay1} p-3`}>
+      <img src={globe} alt='globe' className='w-[70px] sm:w-[100px]'/>
 
-            <div className='flex flex-col gap-2 mb-5 border-b border-slate-400 pb-4 max-w-[280px]'>
-              <h1 className='font-medium text-[28px] '>Visit us on</h1>
-              <p className='font-medium text-[18px]'>6, NH-19, Sector 6, Faridabad, Haryana 121006</p>
-              <div className='font-medium flex items-center gap-3 text-[18px] text-blue-600 hover:text-red-600 duration-300 ease-out'>
-                <a target="_blank" rel="noopener noreferrer" href='https://www.google.com/maps/place/J.C.+Bose+University+of+Science+and+Technology,+YMCA+(Formerly+YMCA+UST)/@28.3675186,77.3177024,17z/data=!4m6!3m5!1s0x390cdc71f6e9f557:0xeb301eec9ff18517!8m2!3d28.3674749!4d77.3158949!16s%2Fm%2F02vvttl?entry=ttu'>
-                  Open on Google Maps
-                </a>
-                <FaArrowRight />
-              </div>
-            </div>
-
-            <div className='font-medium text-[18px]'>
-              <p>Mon - Fri: 8:00am to 5:00pm</p>
-              <p>Saturday: 9:00am to 3:30pm</p>
-            </div>
-          </div>
-
-          <div className={`${hiddenClass} ${Delay2}`}>
-            <img src={contactus} alt='contactus' className='w-[100px] mb-5' />
-            
-            <div className='border-b border-slate-400 pb-4'>
-              <h1 className='font-medium text-[28px] '>Contact us</h1>
-              <p className='font-medium text-[18px] mt-5'>Phone number</p>
-              <p className='font-medium text-[18px] '>0129-2310160</p>
-            </div>
-
-            <div className='mt-5'>
-              <p className='font-medium text-[18px] text-slate-500'>Email Address</p>
-              <p className='font-semibold text-[18px] '>healtheaseofficial@gmail.com</p>
-            </div>
-
-          </div>
-
+      <div className='flex flex-col gap-2 mb-5 border-b border-slate-400 pb-4 max-w-full sm:max-w-lg'>
+        <h1 className='font-medium text-[18px] sm:text-[28px]'>Visit us on</h1>
+        <p className='font-medium text-[16px] sm:text-[18px]'>6, NH-19, Sector 6, Faridabad, Haryana 121006</p>
+        <div className='font-medium flex items-center gap-2 sm:gap-3 text-[16px] sm:text-[18px] text-blue-600 hover:text-red-600 duration-300 ease-out'>
+          <a target="_blank" rel="noopener noreferrer" href='https://www.google.com/maps/place/J.C.+Bose+University+of+Science+and+Technology,+YMCA+(Formerly+YMCA+UST)/@28.3675186,77.3177024,17z/data=!4m6!3m5!1s0x390cdc71f6e9f557:0xeb301eec9ff18517!8m2!3d28.3674749!4d77.3158949!16s%2Fm%2F02vvttl?entry=ttu'>
+            Open on Google Maps
+          </a>
+          <FaArrowRight />
         </div>
       </div>
+
+      <div className='font-medium text-[16px] sm:text-[18px] p-3'>
+        <p>Mon - Fri: 8:00am to 5:00pm</p>
+        <p>Saturday: 9:00am to 3:30pm</p>
+      </div>
+    </div>
+
+    <div className={`${hiddenClass} ${Delay2} p-3`}>
+      <img src={contactus} alt='contactus' className='w-[70px] sm:w-[100px] mb-5' />
+      
+      <div className='border-b border-slate-400 pb-4'>
+        <h1 className='font-medium text-[18px] sm:text-[28px]'>Contact us</h1>
+        <p className='font-medium text-[16px] mt-2 sm:mt-5'>Phone number</p>
+        <p className='font-medium text-[16px] sm:text-[18px]'>0129-2310160</p>
+      </div>
+
+      <div className='mt-2 sm:mt-5 p-3'>
+        <p className='font-medium text-[16px] sm:text-[18px] text-slate-500'>Email Address</p>
+        <p className='font-semibold text-[16px] sm:text-[18px]'>healtheaseofficial@gmail.com</p>
+      </div>
+    </div>
+  </div>
+</div>
+ 
 
 
 
       {/* SECTION 3 WHY CHOOSE US */}
-      <div className='mx-auto max-w-7xl py-[40px] rounded-[4rem] flex justify-center font-clarity-city gap-36 mt-16'>
+      <div className='m-4 sm:mx-auto  max-w-7xl py-10 sm:py-[40px] rounded-[4rem] flex flex-wrap p-3 flex-col sm:flex-row justify-center font-clarity-city gap-4 sm:gap-36 mt-8 sm:mt-16'>
 
-        <div className= {`${hiddenClass} ${Delay1} text-[18px] font-medium `}>
-          <h1 className='text-blue-500 font-bold text-[28px]'>WHY CHOOSE US</h1>
-          <p className='text-[50px] font-semibold leading-tight'>The right care for your loved ones</p>
-          
-          <div className='flex flex-col'>
+<div className={`${hiddenClass} ${Delay1} text-[16px] sm:text-[18px] font-medium sm:w-1/2`}>
+  <h1 className='text-blue-500 font-bold text-[24px] sm:text-[28px]'>WHY CHOOSE US</h1>
+  <p className='text-[36px] sm:text-[50px] font-semibold leading-tight'>The right care for your loved ones</p>
 
-            <div className='flex gap-10 border-b border-slate-400 pb-7 mt-7'>
-              <div className='flex gap-10 hover:translate-x-3 transition-all delay-100 duration-300 '>
-                <img src={residentcare} alt='residentcare'></img>
-                <div>
-                  <h1 className='text-[28px] font-semibold'>Resident care</h1>
-                  <p className='text-[18px] font-medium text-slate-500'>Your health and comfort are our top priorities at HealthEase.</p>
-                </div>
-              </div>
-            </div>
+  <div className='flex flex-col mt-5'>
 
-            <div className='flex gap-10 border-b border-slate-400 pb-7 mt-7'>
-              <div className='flex gap-10 hover:translate-x-3 transition-all delay-100 duration-300 '>
-                <img src={qualitysupport} alt='residentcare'></img>
-                <div>
-                  <h1 className='text-[28px] font-semibold'>Quality support</h1>
-                  <p className='text-[18px] font-medium text-slate-500'>Reliable and quality support tailored to your needs. </p>
-                </div>
-              </div>
-            </div>
-
-            <div className='flex gap-10 pb-7 mt-7'>
-              <div className='flex gap-10 hover:translate-x-3 transition-all delay-100 duration-300 '>
-                <img src={nursestaff} alt='residentcare'></img>
-                <div>
-                  <h1 className='text-[28px] font-semibold'>24/7 nurse staff</h1>
-                  <p className='text-[18px] font-medium text-slate-500'>Rely on our round-the-clock nurse staff, committed to providing attentive and compassionate care whenever you need it. </p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div className={`${hiddenClass} ${Delay2} min-w-fit`}>
-          <img src={nursehelpperson} alt='nurse helping person'/>
+    <div className='flex flex-col gap-7 sm:flex-row sm:gap-10 border-b border-slate-400 pb-7'>
+      <div className='flex gap-5 hover:translate-x-3 transition-all delay-100 duration-300'>
+        <img src={residentcare} alt='residentcare' className='w-[50px] sm:w-[80px] object-cover' />
+        <div>
+          <h1 className='text-[20px] sm:text-2xl font-semibold'>Resident care</h1>
+          <p className='text-[14px] sm:text-lg font-medium text-slate-500'>Your health and comfort are our top priorities at HealthEase.</p>
         </div>
       </div>
+    </div>
 
+    <div className='flex flex-col gap-7 sm:flex-row sm:gap-10 border-b border-slate-400 pb-7 mt-7'>
+      <div className='flex gap-5 hover:translate-x-3 transition-all delay-100 duration-300'>
+        <img src={qualitysupport} alt='qualitysupport' className='w-[50px] sm:w-[80px] object-cover' />
+        <div>
+          <h1 className='text-[20px] sm:text-2xl font-semibold'>Quality support</h1>
+          <p className='text-[14px] sm:text-lg font-medium text-slate-500'>Reliable and quality support tailored to your needs.</p>
+        </div>
+      </div>
+    </div>
 
-      {/* SECTION 4 ABOUT SECTION */}
-      {/* // *****************************************************************************************************
-      // ****************************************** CONTACT US ***********************************************
-      // ***************************************************************************************************** */}
-      
+    <div className='flex flex-wrap flex-col gap-7 md:flex-row sm:gap-10 mt-7'>
+      <div className='flex gap-5 hover:translate-x-3 transition-all delay-100 duration-300'>
+        <img src={nursestaff} alt='nursestaff' className='w-[50px] sm:w-[80px] object-cover rounded-full' />
+        <div>
+          <h1 className='text-[20px] sm:text-2xl font-semibold'>24/7 nurse staff</h1>
+          <p className='text-[14px] sm:text-lg font-medium text-slate-500'>Rely on our round-the-clock nurse staff, committed to providing attentive and compassionate care whenever you need it.</p>
+        </div>
+      </div>
+    </div>
 
+  </div>
+
+</div>
+
+<div className={`${hiddenClass} ${Delay2} min-w-fit sm:w-1/2`}>
+  <img src={nursehelpperson} alt='nurse helping person' className='' />
+</div>
+</div>
 
       <Footer/>
 

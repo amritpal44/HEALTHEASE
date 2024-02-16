@@ -23,18 +23,19 @@ const Navbar = () => {
 
 
   return (
-    <div id='#navbar' className='w-screen bg-black font-clarity-city flex justify-evenly p-3'>
+    <div id='#navbar' className='w-screen z-20 rounded-lg bg-black font-clarity-city flex justify-between md:justify-evenly p-3 px-7'>
       
       <Link to={"/"}>
-        <div className='flex items-center text-slate-200 text-5xl gap-1'>
-          <img src={logo} alt='healthease logo' width={40}/>
+        <div className='flex items-center justify-center text-slate-200 text-xl md:text-3xl gap-1 p-3'>
+        <img src={logo} alt='healthease logo' className="w-6 max-w-[40px]" />
+
           <h1>ealthEase</h1>
         </div>
       </Link>
 
 
       {/* LINKS */}
-      <div className='flex gap-8 text-slate-200 text-xl items-center'> 
+      <div className='hidden md:flex gap-8 text-slate-200 text-xl items-center'> 
         {/* {
           NavbarLinks.map( (link, index) => (
               <Link to={link?.path} key={index}>
@@ -106,18 +107,18 @@ const Navbar = () => {
         }
       </div>
 
-      <div className='flex gap-4'>
+      <div className='flex gap-2 md:gap-4 p-2'>
       
         {token === null && (
           <Link to="/login">
-            <button className=" bg-[#3d65ff] text-slate-200 text-lg font-medium rounded-full px-[22px] py-[7px] text-richblack-100 hover:-translate-y-[2px] ease-linear duration-200">
+            <button className=" bg-[#3d65ff] text-slate-200  text:sx md:text-lg font-medium  rounded-full px-[11px] sm:px-[22px] py-2 text-richblack-100 hover:-translate-y-[2px] ease-linear duration-200">
               Log in
             </button>
           </Link>
         )}
         {token === null && (
           <Link to="/signup">
-            <button className="bg-transparent font-medium  text-slate-200 border border-slate-200 rounded-full px-[22px] py-[7px] cursor-pointer hover:-translate-y-[2px] hover:bg-slate-200 hover:text-slate-950 ease-linear duration-200">
+            <button className="bg-transparent font-medium  text:sx md:text-lg  text-slate-200 border border-slate-200 rounded-full px-[10px] sm:px-[22px] py-2 cursor-pointer hover:-translate-y-[2px] hover:bg-slate-200 hover:text-slate-950 ease-linear duration-200">
               Sign up
             </button>
           </Link>

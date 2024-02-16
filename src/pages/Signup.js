@@ -95,71 +95,73 @@ const Signup = () => {
 
   return (
     <div className='flex flex-col justify-center pt-6'>
-        <div>
-            <Link to={"/"}>
-                <div className='flex items-center font-normal text-5xl gap-1 justify-center'>
-                    <img src={logo} alt='healthease logo' width={40}/>
-                    <h1>ealthEase</h1>
-                </div>
-            </Link>
-        </div>
 
-        <div className='px-[48px] py-[64px] bg-[#f3f8ff] max-w-2xl mt-12 rounded-3xl' >
+  <div>
+    <Link to={"/"}>
+      <div className='flex items-center font-normal text-3xl sm:text-5xl gap-1 justify-center'>
+        <img src={logo} alt='healthease logo' width={30} className='mr-2 sm:mr-3' />
+        <h1 className='text-xl sm:text-2xl'>HealthEase</h1>
+      </div>
+    </Link>
+  </div>
 
-            <h1 className='text-[28px] font-bold'>
-                Sign Up
-            </h1>
-            <p>
-                Unlock a world of wellness and convenience by signing up with HealthEase. Together, we'll embark on a journey to a healthier, happier you.
-            </p>
-            
-            <Tab tabData={tabData} field={accountType} setField={setAccountType}/>
+  <div className='p-6  bg-[#f3f8ff] m-4 max-w-xl mt-4 rounded-3xl'>
 
-            <form  onSubmit={handleOnSubmit} className='font-semibold text-[17px] flex flex-col gap-4' >
-                <div className='flex gap-4 '>
-                    <label>
-                        <p>First Name</p>
-                        <input type='text'  name='firstName' value={firstName}  required onChange={handleOnChange} className='px-10 py-2 rounded-full shadow-md'></input>
-                    </label>
-                    <label>
-                        <p>Last Name</p>
-                        <input type='text' name='lastName' value={lastName}  required onChange={handleOnChange} className='px-10 py-2 rounded-full shadow-md'></input>
-                    </label>
-                </div>
+    <h1 className='text-xl sm:text-2xl font-bold p-1'>
+      Sign Up
+    </h1>
+    <p className='text-sm sm:text-base p-1'>
+      Unlock a world of wellness and convenience by signing up with HealthEase. Together, we'll embark on a journey to a healthier, happier you.
+    </p>
 
-                <div className=''>
-                    <label>
-                        <p>Email Address</p>
-                        <input type='email' name='email' value={email}  required onChange={handleOnChange} className='px-10 py-2 rounded-full shadow-md'></input>
-                    </label>
-                </div>
-                
-                <div>
-                    <label>
-                        <p>Contact Number</p>
-                        <input type='number'  name='contactNumber' value={contactNumber}  required onChange={handleOnChange} className='px-10 py-2 rounded-full shadow-md'></input>
-                    </label>
-                </div>
+    {/* Adjust Tab Component for responsiveness */}
+    <Tab tabData={tabData} field={accountType} setField={setAccountType}/>
 
-                <div className='flex gap-4 '>
-                    <label>
-                        <p>Create Password</p>
-                        <input type={"password"}  name='password' value={password}  required onChange={handleOnChange} className='px-10 py-2 rounded-full shadow-md'></input>
-                    </label>
-                    <label>
-                        <p>Confirm Password</p>
-                        <input type={"password"} name='confirmPassword' value={confirmPassword}  required onChange={handleOnChange} className='px-10 py-2 rounded-full shadow-md'></input>
-                    </label>
-                </div>
+    <form onSubmit={handleOnSubmit} className='font-semibold text-sm sm:text-base flex flex-col gap-4 p-1'>
+      <div className='flex flex-col sm:flex-row gap-4 '>
+        <label className='flex-1'>
+          <p>First Name</p>
+          <input type='text' name='firstName' value={firstName} required onChange={handleOnChange} className='w-full px-4 py-2 rounded-md shadow-md'></input>
+        </label>
+        <label className='flex-1'>
+          <p>Last Name</p>
+          <input type='text' name='lastName' value={lastName} required onChange={handleOnChange} className='w-full px-4 py-2 rounded-md shadow-md'></input>
+        </label>
+      </div>
 
+      <div className=''>
+        <label>
+          <p>Email Address</p>
+          <input type='email' name='email' value={email} required onChange={handleOnChange} className='w-full px-4 py-2 rounded-md shadow-md'></input>
+        </label>
+      </div>
 
-                <button type='submit' className='bg-[#3d65ff] rounded-full text-slate-200 font-medium text-xl px-[38px] py-[20px] cursor-pointer hover:-translate-y-1 ease-linear duration-200 mt-4'>
-                    Create Account
-                </button>
-            </form>
+      <div>
+        <label>
+          <p>Contact Number</p>
+          <input type='number' name='contactNumber' value={contactNumber} required onChange={handleOnChange} className='w-full px-4 py-2 rounded-md shadow-md'></input>
+        </label>
+      </div>
 
-        </div>
-    </div>
+      <div className='flex flex-col sm:flex-row gap-4 '>
+        <label className='flex-1'>
+          <p>Create Password</p>
+          <input type='password' name='password' value={password} required onChange={handleOnChange} className='w-full px-4 py-2 rounded-md shadow-md'></input>
+        </label>
+        <label className='flex-1'>
+          <p>Confirm Password</p>
+          <input type='password' name='confirmPassword' value={confirmPassword} required onChange={handleOnChange} className='w-full px-4 py-2 rounded-md shadow-md'></input>
+        </label>
+      </div>
+
+      <button type='submit' className='bg-[#3d65ff] rounded-full text-slate-200 font-medium text-lg px-6 py-3 cursor-pointer hover:-translate-y-1 ease-linear duration-200 mt-4'>
+        Create Account
+      </button>
+    </form>
+
+  </div>
+</div>
+
   )
 }
 
