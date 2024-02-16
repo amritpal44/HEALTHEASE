@@ -26,6 +26,7 @@ import { useSelector } from 'react-redux';
 import Notification from './pages/Notification';
 import Cart from './components/Core/Dashboard/Cart';
 import Medicines from './pages/Medicines';
+import Navbar from './components/Common/Navbar';
  
 
 function App() {
@@ -56,8 +57,9 @@ function App() {
 
 
   return (
-    <div className="flex flex-col w-[98.93vw] justify-content items-center overflow-x-clip">
-      {/* <Navbar />  */}
+    <div className="flex flex-col min-h-[calc(100vh-3.5rem)] min-w-[calc(100vw-3.5rem)] h-screen">
+
+      <Navbar /> 
       <Routes>
 
         <Route path='/' element={<HomePage/>} />

@@ -78,39 +78,40 @@ const Contact = () => {
 
 
   return (
-    <div>
-      <Navbar/>
 
-      <div id='contactus' className='mx-auto w-full bg-[#0d192b] py-[40px] px-[100px] flex justify-around font-clarity-city gap-36'>
-        <div className= {`${hiddenClass} ${Delay1} mt-14`}>
+    <div id='contactus' className='mx-auto w-full bg-[#0d192b] px-[20px] font-clarity-city h-full overflow-y-scroll'>
+      <div className='max-w-7xl mx-7 flex flex-col lg:flex-row lg:mx-auto gap-5'>
+        <div className= {`${hiddenClass} ${Delay1} mt-14 flex flex-col lg:w-4/6`}>
           <h1 className='text-blue-500 font-bold text-[28px]'>CONTACT US</h1>
-          <p className='text-[50px] font-semibold leading-tight text-slate-200'>Get in touch</p>
+          <p className=' text-[25px] lg:text-[50px] font-semibold leading-tight text-slate-200 mt-8'>Get in touch</p>
           <p className='text-slate-500 mt-5 text-[18px]'>
             Have questions or need assistance? Get in touch, and our friendly team at HealthEase Hub will be happy to help you.
           </p>
 
-          <div className='flex gap-8 mt-8'>
-            <img src={contactus} alt='contact us' className='w-[100px] mb-5 rounded-[99999px]'/>
-            <div className='text-slate-200 items-center'>
-              <p className='font-medium text-[18px] mt-5'>Phone number</p>
-              <p className='font-medium text-[18px] '>0129-2310160</p>
-            </div>
-            <div className='mt-5 text-slate-200'>
-              <p className='font-medium text-[18px] '>Email Address</p>
-              <p className='font-semibold text-[18px] '>healtheaseofficial@gmail.com</p>
+          <div className='flex gap-8 mt-10'>
+            <img src={contactus} alt='contact us' className='w-[70px] sm:w-[100px] mb-5 object-contain'/>
+            <div className='flex flex-col sm:flex-row sm:gap-8'>
+              <div className='text-slate-200 items-center'>
+                <p className='font-medium text-[14px] sm:text-[18px] mt-5'>Phone number</p>
+                <p className='font-medium text-[14px] sm:text-[18px] '>0129-2310160</p>
+              </div>
+              <div className='mt-5 text-slate-200'>
+                <p className='font-medium text-[14px] sm:text-[18px] '>Email Address</p>
+                <p className='font-semibold text-[14px] sm:text-[18px]'>healtheaseofficial@gmail.com</p>
+              </div>
             </div>
           </div>
 
           <div className='flex gap-8 mt-5'>
-            <img src={globe} alt='globe' className='w-[100px] mb-5 rounded-[99999px]'/>
+            <img src={globe} alt='globe' className='w-[70px] sm:w-[100px] mb-5 object-contain'/>
             <div className='mt-5 text-slate-200'>
-              <h1 className='font-medium text-[20px] '>Visit us on</h1>
-              <p className='font-medium text-[18px]'>6, NH-19, Sector 6, Faridabad, Haryana 121006</p>
+              <h1 className='font-medium text-[14px] sm:text-[20px] '>Visit us on</h1>
+              <p className='font-medium text-[14px] sm:text-[18px]'>6, NH-19, Sector 6, Faridabad, Haryana 121006</p>
             </div>
           </div>
         </div>
 
-        <div className={`${hiddenClass} ${Delay2} rounded-3xl p-7 lg:p-14 flex gap-3 flex-col`}>
+        <div className={`${hiddenClass} ${Delay2} rounded-3xl py-8 lg:p-14 flex gap-3 flex-col w-full lg:w-[900px] max-w-2xl mx-auto`}>
           <form
             className="flex flex-col gap-7"
             onSubmit={handleSubmit(submitContactForm)}
@@ -122,7 +123,7 @@ const Contact = () => {
                   name="firstname"
                   id="firstname"
                   placeholder="Enter first name"
-                  className="form-style text-xl rounded-[30px] px-[18px] py-[12px] bg-slate-100"
+                  className="form-style sm:text-xl rounded-lg  w-full px-3 lg:px-[18px] py-[10px] lg:py-[12px] bg-slate-100"
                   {...register("firstname", { required: true })}
                 />
                 {errors.firstname && (
@@ -137,7 +138,7 @@ const Contact = () => {
                   name="lastname"
                   id="lastname"
                   placeholder="Enter last name"
-                  className="form-style text-xl rounded-[30px] px-[18px] py-[12px] bg-slate-100"
+                  className="form-style sm:text-xl rounded-lg  w-full px-3 lg:px-[18px] py-[10px] lg:py-[12px] bg-slate-100"
                   {...register("lastname")}
                 />
               </div>
@@ -149,7 +150,7 @@ const Contact = () => {
                 name="email"
                 id="email"
                 placeholder="Enter email address"
-                className="form-style text-xl rounded-[30px] px-[18px] py-[12px] bg-slate-100"
+                className="form-style sm:text-xl rounded-lg  w-full px-3 lg:px-[18px] py-[10px] lg:py-[12px] bg-slate-100"
                 {...register("email", { required: true })}
               />
               {errors.email && (
@@ -165,7 +166,7 @@ const Contact = () => {
                 name="phonenumber"
                 id="phonenumber"
                 placeholder="12345 67890"
-                className="form-style text-xl rounded-[30px] px-[18px] py-[12px] bg-slate-100"
+                className="form-style sm:text-xl rounded-lg w-full px-3 lg:px-[18px] py-[10px] lg:py-[12px] bg-slate-100"
                 {...register("phoneNo", {
                   required: {
                     value: true,
@@ -190,7 +191,7 @@ const Contact = () => {
                 cols="30"
                 rows="5"
                 placeholder="Enter your message here"
-                className="form-style text-xl rounded-[30px] px-[18px] py-[12px] bg-slate-200"
+                className="form-style sm:text-xl rounded-lg w-full px-3 lg:px-[18px] py-[10px] lg:py-[12px] bg-slate-100"
                 {...register("message", { required: true })}
               />
               {errors.message && (
@@ -203,7 +204,7 @@ const Contact = () => {
             <button
               disabled={loading}
               type="submit"
-              className={`bg-[#3d65ff] rounded-full text-slate-200 font-medium text-xl px-[38px] py-[20px] cursor-pointer hover:-translate-y-1 ease-linear duration-200 mt-4
+              className={`bg-[#3d65ff] rounded-lg text-slate-200 sm:rounded-lg font-bold text-xl sm:text-2xl  sm:px-[18px] py-[12px] sm:py-[17px] cursor-pointer hover:-translate-y-1 ease-linear duration-200 mt-4
                 ${
                   loading ? 'opacity-30 cursor-not-allowed' : ''
                 }
@@ -214,8 +215,9 @@ const Contact = () => {
           </form>
         </div>
       </div>
-
+      
     </div>
+
   )
 }
 

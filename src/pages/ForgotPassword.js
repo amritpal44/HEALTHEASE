@@ -26,29 +26,29 @@ const ForgotPassword = () => {
     }
 
   return (
-    <div>
+    <div className='flex justify-center w-full h-full bg-[#0d192b]'>
         {
             loading ? (
                 <div>
                     {/* <ClipLoader size={50}/> */}
                 </div>
             ):(
-                <div className='flex flex-col justify-center pt-6'>
-                    <div>
+                <div className='flex flex-col justify-center pt-6 mx-8'>
+                    {/* <div>
                         <Link to={"/"}>
                             <div className='flex items-center font-normal text-5xl gap-1 justify-center'>
                                 <img src={logo} alt='healthease logo' width={40}/>
                                 <h1>ealthEase</h1>
                             </div>
                         </Link>
-                    </div>
-                    <div className='px-[48px] py-[64px] bg-[#f3f8ff] max-w-2xl mt-12 rounded-3xl'>
+                    </div> */}
+                    <div className=' px-[20px] sm:px-[48px] py-[20px] sm:py-[64px] bg-[#f3f8ff] max-w-xl mt-12 rounded-3xl'>
                         <h1 className='text-[28px] font-bold'>
                             {
                                 !emailSent ? "Reset your password" : "Check your email"
                             }
                         </h1>
-                        <p className='mt-2'>
+                        <p className='mt-2  sm:text-md'>
                             {
                                 !emailSent ? "Have no fear. We'll email you instructions to reset your password. If you dont have access to your email we can try account recovery" : `We have sent the reset email to ${email}`
                             }
@@ -66,11 +66,11 @@ const ForgotPassword = () => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Enter email address"
-                                className='px-10 py-2 rounded-full shadow-md'
+                                className='px-10 py-2 rounded-lg shadow-md mt-2'
                                 />
                             </label>
                             )}
-                            <button type="submit" className='bg-[#3d65ff] mt-9 rounded-full px-[38px] py-[15px] cursor-pointer hover:-translate-y-1 ease-linear duration-200'>
+                            <button type="submit" className='bg-[#3d65ff] mt-9 rounded-lg sm:rounded-full px-[38px] py-[12px] sm:py-[15px] cursor-pointer hover:-translate-y-1 ease-linear duration-200'>
                                 {!emailSent ? "Sumbit" : "Resend Email"}
                             </button>
                         </form>

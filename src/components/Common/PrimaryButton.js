@@ -6,8 +6,7 @@ const PrimaryButton = ({children, linkto}) => {
 
     <Link to={linkto}>
 
-        <div className='bg-[#3d65ff] m-3 rounded-full text-center  px-[15px] sm:px-7 py-3 sm:py-4 
-        cursor-pointer hover:-translate-y-1 ease-linear duration-200'>
+        <div className='bg-[#3d65ff] rounded-full px-[30px] py-[15px] text-center md:px-[38px] md:py-[20px] cursor-pointer hover:-translate-y-1 ease-linear duration-200'>
            
             {children}
             

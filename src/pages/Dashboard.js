@@ -22,7 +22,6 @@ const Dashboard = () => {
   return (
 
     <div className='flex flex-col bg-black bg-opacity-5'>
-      <Navbar/>
       <div className='flex '>
         
           <Sidebar />
