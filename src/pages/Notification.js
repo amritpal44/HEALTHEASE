@@ -39,8 +39,6 @@ const Notification = () => {
 
   return (
     <div className='flex flex-col'>
-      <Navbar/>
-
       <div className='flex gap-10 mt-16 justify-center'>
         { loading ? (
           <div className=' flex flex-wrap justify-center h-full w-full items-center max-w-[1000px]'>

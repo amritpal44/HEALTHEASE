@@ -33,13 +33,13 @@ const Medicines = () => {
   }, [])
 
   return (
-    <div >
-      <div className='mt-10 '>
+    <div className='max-screen' >
+      <div className='mt-10  '>
         {
           loading ? (<div className='w-screen flex h-[555px] justify-center items-center'>
             <ClipLoader size={50} />
           </div>) : (
-            <div >
+            <div className='flex- flex-wrap flex-col  justify-center items-center gap-2 m-4'>
               {
                 medicines.map((medicine) => (
                   <MedicineCard key={medicine._id} medicine={medicine} />
