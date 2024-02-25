@@ -33,7 +33,7 @@ const Medicines = () => {
   }, [])
 
   return (
-    <div className='max-screen' >
+    <div >
       <div className='mt-10  '>
         {
           loading ? (<div className='w-screen flex h-[555px] justify-center items-center'>

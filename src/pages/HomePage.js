@@ -23,12 +23,16 @@ import Navbar from '../components/Common/Navbar'
 // import toast from 'react-hot-toast'
 import Footer from '../components/Common/Footer'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const HomePage = () => {
 
   const hiddenClass = "hidden-transition"
   const Delay1 = "hidden-transition-delay-1"
   const Delay2 = "hidden-transition-delay-2"
+
+  const {user} = useSelector( (state) => state.profile);
+  // console.log(user);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -82,9 +86,29 @@ const HomePage = () => {
           {/* TWO BUTTONS */}
           <div className={`flex md:flex-row flex-col gap-5 justify-around pt-10 text-slate-200 text-[18px] font-bold ${hiddenClass} ${Delay2} m-6`}>
 
-            <PrimaryButton linkto={"/doctors"}>
-              Book an appointment
-            </PrimaryButton>
+            {
+              user?.accountType === "Patient" && (
+                <PrimaryButton linkto={"/doctors"}>
+                  Book an appointment
+                </PrimaryButton>
+              )
+            }
+
+            {
+              user?.accountType === "Doctor" && (
+                <PrimaryButton linkto={"/appointment-request"}>
+                  View Appointment
+                </PrimaryButton>
+              )
+            }
+
+            {
+              user?.accountType === "Vendor" && (
+                <PrimaryButton linkto={"/upload-medicine"}>
+                  Upload Medicine
+                </PrimaryButton>
+              )
+            }
 
             <SecondaryButton linkto={"/medicines"}>
               Buy Medicines

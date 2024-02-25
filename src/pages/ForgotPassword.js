@@ -33,7 +33,7 @@ const ForgotPassword = () => {
                     {/* <ClipLoader size={50}/> */}
                 </div>
             ):(
-                <div className='flex flex-col justify-center pt-6 mx-8'>
+                <div className='flex flex-col pt-6 mx-3 sm:mx-8'>
                     {/* <div>
                         <Link to={"/"}>
                             <div className='flex items-center font-normal text-5xl gap-1 justify-center'>
@@ -66,7 +66,7 @@ const ForgotPassword = () => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Enter email address"
-                                className='px-10 py-2 rounded-lg shadow-md mt-2'
+                                className=' px-5 sm:px-10 py-2 rounded-lg shadow-md mt-2'
                                 />
                             </label>
                             )}

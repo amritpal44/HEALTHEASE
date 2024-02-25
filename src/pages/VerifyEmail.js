@@ -43,7 +43,7 @@ const VerifyEmail = () => {
 
 
   return (
-    <div>
+    <div className='flex justify-center h-full w-full bg-[#0d192b]'>
 
       {
         loading ? (
@@ -52,19 +52,19 @@ const VerifyEmail = () => {
           </div>  
         ) : (
 
-          <div className='flex flex-col justify-center pt-6'>
-            <div>
+          <div className='flex flex-col'>
+            {/* <div>
               <Link to={"/"}>
                   <div className='flex items-center font-normal text-5xl gap-1 justify-center'>
                       <img src={logo} alt='healthease logo' width={40}/>
                       <h1>ealthEase</h1>
                   </div>
               </Link>
-            </div>
+            </div> */}
 
             <form onSubmit={handleOnSubmit}>
               
-              <div className='px-[48px] py-[64px] pb-10 bg-[#f3f8ff] max-w-2xl mt-12 rounded-3xl'>
+              <div className='px-[48px] py-[64px] pb-10 bg-[#f3f8ff] max-w-2xl rounded-3xl'>
                 <h1 className='text-[28px] font-bold'>
                   Verify Email
                 </h1>

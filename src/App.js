@@ -27,11 +27,12 @@ import Notification from './pages/Notification';
 import Cart from './components/Core/Dashboard/Cart';
 import Medicines from './pages/Medicines';
 import Navbar from './components/Common/Navbar';
+import UploadMedicine from './pages/UploadMedicine';
  
 
 function App() {
 
-  const user = useSelector( (state) => state.profile );
+  const {user} = useSelector( (state) => state.profile );
 
   // const navigate = useNavigate();
 
@@ -91,7 +92,7 @@ function App() {
 
         {/*********************  BOOKING ROUTES  *********************/}
         {
-          user?.user?.accountType === "Patient" && (
+          user?.accountType === "Patient" && (
             <>
               <Route 
                 path='/doctor/book-appointment/:doctorId'
@@ -102,7 +103,7 @@ function App() {
           )
         }
         {
-          user?.user?.accountType === "Doctor" && (
+          user?.accountType === "Doctor" && (
             <>
               <Route 
                 path='/appointment-request'
@@ -138,6 +139,14 @@ function App() {
           }/>
 
         </Route>
+
+
+        {/*********************  MEDICINE UPLOAD ROUTES  *********************/}
+        {
+          user?.accountType === "Vendor" && (
+            <Route path='/upload-medicine' element={<UploadMedicine/>} />
+          )
+        }
 
         <Route path='/cart' element={<Cart />}/>
 

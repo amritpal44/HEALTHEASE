@@ -37,7 +37,7 @@ const Sidebar = () => {
             {/* <ClipLoader size={50} /> */}
         </div>
     ) : (
-        <div className='flex flex-col min-w-[200px] border-r-[1px] border-r-slate-700 pt-10 ml-2'>
+        <div className='hidden md:flex flex-col min-w-[200px] border-r-[1px] border-r-slate-700 pt-10 p-2 text-slate-200 h-full'>
 
             <div className='flex flex-col gap-2'>
 
@@ -56,7 +56,7 @@ const Sidebar = () => {
 
             <div className='flex flex-col gap-[6px]'>
                 <SidebarLink link={{ name: "Settings", path: "/dashboard/settings" }} iconName="VscSettingsGear" />
-                <div onClick={() => { dispatch(logout(navigate)) }} className="flex w-full items-center font-medium text-l  gap-x-2 py-[8px] px-2  hover:bg-red-700 hover:text-slate-50 rounded-md cursor-pointer">
+                <div onClick={() => { dispatch(logout(navigate)) }} className="flex w-full items-center font-medium text-l  gap-x-2 py-[8px] px-2  hover:bg-red-900 hover:text-slate-50 rounded-md cursor-pointer">
                     <VscSignOut className="text-lg" />
                     Logout
                 </div>

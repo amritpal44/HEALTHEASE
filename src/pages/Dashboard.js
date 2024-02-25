@@ -21,18 +21,20 @@ const Dashboard = () => {
 
   return (
 
-    <div className='flex flex-col bg-black bg-opacity-5'>
-      <div className='flex '>
-        
-          <Sidebar />
+    
+    <div className='flex w-full bg-[#0d192b]'>
+      
+      <div className='h-full'>
+        <Sidebar />
+      </div>
 
-          <div className='flex justify-center w-[80%]'>
-            <Outlet />
-          </div>
-
+      <div className='flex justify-center w-full md:w-[80%]'>
+        <Outlet />
       </div>
 
     </div>
+
+    
     // <div className="relative flex min-h-[calc(100vh-3.5rem)]">
     //   <Sidebar />
     //   <div className="h-[calc(100vh-3.5rem)] flex-1 overflow-auto">

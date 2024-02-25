@@ -23,11 +23,11 @@ const Navbar = () => {
 
 
   return (
-    <div id='#navbar' className='z-20 bg-black font-clarity-city flex justify-between md:justify-evenly p-2 md:px-7 px-3'>
+    <div id='#navbar' className='z-20 bg-slate-950 font-clarity-city flex justify-between md:justify-evenly px-0 p-1 sm:p-2 md:px-7 sm:px-3'>
       
       <Link to={"/"}>
-        <div className='flex items-center justify-center text-slate-200 text-3xl md:text-4xl gap-1 p-3'>
-        <img src={logo} alt='healthease logo' className="md:w-8  w-6 max-w-[40px]" />
+        <div className='flex items-center justify-center text-slate-200 text-2xl sm:text-3xl md:text-4xl gap-1 p-3'>
+          <img src={logo} alt='healthease logo' className=" w-5 sm:w-6 md:w-8   max-w-[40px]" />
 
           <h1>ealthEase</h1>
         </div>

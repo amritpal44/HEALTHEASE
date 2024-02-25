@@ -86,7 +86,6 @@ const BookingPage = () => {
 
   return (
     <div className='flex flex-col'>
-      <Navbar />
       {loading ? (
         <div className='flex justify-center h-[500px] w-full items-center'>
           <ClipLoader size={50} />

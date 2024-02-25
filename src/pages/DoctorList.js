@@ -33,7 +33,6 @@ const DoctorList = () => {
 
   return (
     <div className='flex flex-col'>
-        <Navbar/>
         <div className='flex gap-10 mt-16 justify-center'>
             {
                 loading ? (

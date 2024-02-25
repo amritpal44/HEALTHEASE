@@ -81,20 +81,25 @@ const Signup = () => {
 
     
     const tabData = [
-        {
-            id: 1,
-            tabName: "Patient",
-            type: "Patient"
-        },
-        {
-            id: 2,
-            tabName: "Doctor",
-            type: "Doctor"
-        }
+      {
+        id: 1,
+        tabName: "Patient",
+        type: "Patient"
+      },
+      {
+        id: 2,
+        tabName: "Doctor",
+        type: "Doctor"
+      },
+      {
+        id: 3,
+        tabName: "Vendor",
+        type: "Vendor"
+      }
     ]
 
   return (
-    <div className='w-full h-full flex flex-col items-center pt-6 bg-[#0d192b] overflow-y-scroll pb-4 sm:pb-7'>
+    <div className='w-full flex flex-col items-center pt-6 bg-[#0d192b] pb-4 sm:pb-7'>
 
       {/* <div>
         <Link to={"/"}>

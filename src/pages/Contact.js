@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../components/Common/Navbar'
+// import Navbar from '../components/Common/Navbar'
 import { useForm } from 'react-hook-form'
 import { apiConnector } from '../services/apiconnector'
 import toast from 'react-hot-toast'
@@ -79,7 +79,7 @@ const Contact = () => {
 
   return (
 
-    <div id='contactus' className='mx-auto w-full bg-[#0d192b] px-[20px] font-clarity-city h-full overflow-y-scroll'>
+    <div id='contactus' className='mx-auto w-full bg-[#0d192b] px-[20px] font-clarity-city'>
       <div className='max-w-7xl mx-7 flex flex-col lg:flex-row lg:mx-auto gap-5'>
         <div className= {`${hiddenClass} ${Delay1} mt-14 flex flex-col lg:w-4/6`}>
           <h1 className='text-blue-500 font-bold text-[28px]'>CONTACT US</h1>
@@ -210,7 +210,7 @@ const Contact = () => {
                 }
               `}
             >
-              Send Message
+              Submit
             </button>
           </form>
         </div>

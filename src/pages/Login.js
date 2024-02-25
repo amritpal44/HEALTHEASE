@@ -31,7 +31,7 @@ const Login = () => {
   const {email, password} = formData;
 
   return (
-    <div className='flex flex-wrap h-full flex-col justify-center pt-6 p-4 gap-2 w-full bg-[#0d192b]'>
+    <div className='flex flex-wrap h-full flex-col pt-6 p-4 gap-2 w-full bg-[#0d192b]'>
 
       {/* <div>
         <Link to={"/"}>

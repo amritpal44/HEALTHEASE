@@ -19,7 +19,7 @@ const SidebarLink = ({link, iconName}) => {
             {/* <span className={`absolute left-0 top-0 h-full w-[0.2rem] bg-white ${matchRoute(link.path)? "opacity-100" : "opacity-0"}`}>
 
             </span> */}
-            <div className={` flex items-center gap-x-2 ${matchRoute(link.path) ? "bg-blue-400" : ""}  font-medium rounded-md py-1 pl-2` }>
+            <div className={` flex items-center gap-x-2 ${matchRoute(link.path) ? "bg-[#3970ae]" : ""}  font-medium rounded-md py-1 pl-2` }>
                 <Icon className="text-lg"/>
                 <span>{link.name}</span>
             </div>
