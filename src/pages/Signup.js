@@ -99,7 +99,7 @@ const Signup = () => {
     ]
 
   return (
-    <div className='w-full flex flex-col items-center pt-6 bg-[#0d192b] pb-4 sm:pb-7'>
+    <div className='w-full h-full flex flex-col items-center pt-6 bg-[#0d192b] pb-4 sm:pb-7'>
 
       {/* <div>
         <Link to={"/"}>

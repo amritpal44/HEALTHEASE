@@ -56,9 +56,9 @@ function App() {
   //   };
   // }, []);
 
-
+  // min-h-[calc(100vh-3.5rem)] min-w-[calc(100vw-3.5rem)]
   return (
-    <div className="flex flex-col min-h-[calc(100vh-3.5rem)] min-w-[calc(100vw-3.5rem)] h-screen">
+    <div className="flex flex-col sm:h-screen">
 
       <Navbar /> 
       <Routes>

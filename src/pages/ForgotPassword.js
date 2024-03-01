@@ -26,7 +26,7 @@ const ForgotPassword = () => {
     }
 
   return (
-    <div className='flex justify-center w-full h-full bg-[#0d192b]'>
+    <div className='flex justify-center w-full h-screen sm:h-full bg-[#0d192b]'>
         {
             loading ? (
                 <div>

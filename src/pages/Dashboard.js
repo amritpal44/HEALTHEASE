@@ -22,13 +22,13 @@ const Dashboard = () => {
   return (
 
     
-    <div className='flex w-full bg-[#0d192b]'>
+    <div className='flex w-full h-full bg-[#0d192b] relative overflow-y-scroll '>
       
-      <div className='h-full'>
+      <div className='h-full z-20 absolute '>
         <Sidebar />
       </div>
 
-      <div className='flex justify-center w-full md:w-[80%]'>
+      <div className='flex justify-center w-full h-full ml-[38px] md:ml-[200px] '>
         <Outlet />
       </div>
 

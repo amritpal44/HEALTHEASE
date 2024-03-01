@@ -6,8 +6,8 @@ import EditProfile from "./EditProfile"
 export default function Settings() {
   return (
     
-    <div className="flex flex-col pt-6 w-[600px] mb-7">
-      <h1 className="mb-14 text-3xl font-medium text-richblack-5">
+    <div className="flex flex-col pt-6 md:w-[500px] lg:w-[600px] mb-7 mx-auto">
+      <h1 className="mb-14 text-blue-500 font-clarity-city font-bold text-3xl">
         Edit Profile
       </h1>
       

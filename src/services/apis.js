@@ -41,7 +41,9 @@ export const medicineEndpoints = {
     MEDICINE_VERIFY_API: BASE_URL + "/payment/verifyPayment",
     SEND_PAYMENT_SUCCESS_EMAIL_API: BASE_URL + "/payment/sendPaymentSuccessEmail",
 
-    GET_ALL_MEDICINES: BASE_URL + "/medicine/getAllMedicine"
+    GET_ALL_MEDICINES: BASE_URL + "/medicine/getAllMedicine",
+
+    SHOW_ALL_CATEGORY: BASE_URL + "/medicine/showAllCategory",
 }
 
 export const contactusEndpoint = {

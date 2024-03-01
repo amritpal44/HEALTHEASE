@@ -35,7 +35,7 @@ const MyProfile = () => {
                 <img
                     src={user?.image}
                     alt={`profile-${user?.firstName}`}
-                    className="aspect-square w-[78px] rounded-full object-cover"
+                    className="aspect-square w-[60px] sm:w-[78px] rounded-full object-cover"
                 />
                 <div className="space-y-1 ">
                     <p className="text-lg font-semibold">

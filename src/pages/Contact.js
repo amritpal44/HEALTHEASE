@@ -79,7 +79,7 @@ const Contact = () => {
 
   return (
 
-    <div id='contactus' className='mx-auto w-full bg-[#0d192b] px-[20px] font-clarity-city'>
+    <div id='contactus' className='mx-auto w-full h-full bg-[#0d192b] px-[20px] font-clarity-city'>
       <div className='max-w-7xl mx-7 flex flex-col lg:flex-row lg:mx-auto gap-5'>
         <div className= {`${hiddenClass} ${Delay1} mt-14 flex flex-col lg:w-4/6`}>
           <h1 className='text-blue-500 font-bold text-[28px]'>CONTACT US</h1>
@@ -111,7 +111,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className={`${hiddenClass} ${Delay2} rounded-3xl py-8 lg:p-14 flex gap-3 flex-col w-full lg:w-[900px] max-w-2xl mx-auto`}>
+        <div className={`${hiddenClass} ${Delay2} rounded-3xl py-8 lg:p-14 flex gap-3 flex-col w-full h-full lg:w-[900px] max-w-2xl mx-auto`}>
           <form
             className="flex flex-col gap-7"
             onSubmit={handleSubmit(submitContactForm)}
