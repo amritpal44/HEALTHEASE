@@ -11,10 +11,15 @@ exports.createMedicine = async(req, res) => {
     try {        
         const userId = req.user.id;
 
-        const {name, description, category, price, stock} = req.body;
+        const {name, description, category, price, stock} = JSON.parse(req.body.data);
         //const vendor =userId;
 
-        const images = req.files.medicineImage
+        // console.log("req.body: ", req.body);
+        // console.log("req.files: ", req.files);
+
+        const images = req.files.images;
+
+        // console.log("images in createMedicine", images);
 
         if(!name ||  !description || !category || !price || !stock || !images){
             return res.status(400).json({
@@ -33,7 +38,8 @@ exports.createMedicine = async(req, res) => {
         }
 
         //to do the following operation a category controller is first needed to be made as we need to store a category in db
-        const categoryDetail = await categoryModel.findById(category);
+        const categoryDetail = await categoryModel.findOne({name: category});
+        // console.log("categoryDetail: ", categoryDetail); category receive ho rahi hae
         if (!categoryDetail) {
             return res.status(404).json({
             success: false,
@@ -46,11 +52,12 @@ exports.createMedicine = async(req, res) => {
             images,
             "HealthEase/Medicine_Images"
         )
+        // console.log(imageUploadDetail); image upload ho rahi hae
 
         const newMedicine = await medicineModel.create({
             name,
             description,
-            category: [category],
+            category: [categoryDetail._id],
             price,
             stock,
             images: [imageUploadDetail.secure_url],
@@ -68,7 +75,7 @@ exports.createMedicine = async(req, res) => {
 
         //add this medicine to category db
         const updatedCategoryDetail = await categoryModel.findByIdAndUpdate(
-            { _id: category},
+            { _id: categoryDetail._id},
             {
                 $push: { medicines: newMedicine._id }
             },

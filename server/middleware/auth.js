@@ -109,9 +109,9 @@ exports.isDoctor = async (req, res, next) => {
 exports.isVendor = async (req, res, next) => {
 	try {
 		const userDetails = await User.findOne({ email: req.user.email });
-		console.log(userDetails);
+		//console.log(userDetails);
 
-		console.log(userDetails.accountType);
+		//console.log(userDetails.accountType);
 
 		if (userDetails.accountType !== "Vendor") {
 			return res.status(401).json({

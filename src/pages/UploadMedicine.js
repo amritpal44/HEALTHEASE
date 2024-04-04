@@ -5,18 +5,18 @@ import { apiConnector } from '../services/apiconnector';
 import { medicineEndpoints } from '../services/apis';
 import toast from 'react-hot-toast';
 import { ClipLoader } from 'react-spinners';
+import { useSelector } from 'react-redux';
 
 const UploadMedicine = () => {
 
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState();
-
-  const [formData, setFormData] = useState({
-      name: "",
-      description: "",
-      price: 999,
-      stock: 0,
-  })
+  const {token} = useSelector((state) => state.auth)
+  const {
+    register, 
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const fetchCategories = async() => {
     setLoading(true);
@@ -24,7 +24,7 @@ const UploadMedicine = () => {
     try {
       const rawResponse = await apiConnector("GET", medicineEndpoints.SHOW_ALL_CATEGORY);
       const response = rawResponse.data;
-      console.log(response);
+      // console.log(response);
       if(response){
         setCategories(response.data);
       }
@@ -41,16 +41,34 @@ const UploadMedicine = () => {
     fetchCategories()
   }, [])
 
-  const {
-    register, 
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
   
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
-  }
+    
+    const images = data.images;
+    console.log("images: ", images);
 
+    delete data.images;
+
+    const formData = new FormData();
+    formData.append("images", images[0]);
+
+    formData.append("data", JSON.stringify(data));
+
+    try {
+      const response = await apiConnector("POST", medicineEndpoints.CREATE_MEDICINE, formData, {
+        Authorization: `Bearer ${token}`
+      })
+      console.log(response);
+
+      if(response?.data?.success == true){
+        toast.success("Medicine Uploaded Successfully")
+      }
+    } catch (error) {
+      console.log("error while creating medicine")
+      console.log("error", error)
+    }
+  }
 
   return (
     <>

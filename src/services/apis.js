@@ -44,6 +44,8 @@ export const medicineEndpoints = {
     GET_ALL_MEDICINES: BASE_URL + "/medicine/getAllMedicine",
 
     SHOW_ALL_CATEGORY: BASE_URL + "/medicine/showAllCategory",
+
+    CREATE_MEDICINE: BASE_URL + "/medicine/createMedicine",
 }
 
 export const contactusEndpoint = {

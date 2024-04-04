@@ -7,6 +7,7 @@ const { uploadImageToCloudinary } = require("../utils/uploadImageToCloudinary")
 exports.updateDisplayPicture = async (req, res) => {
     try {
       const displayPicture = req.files.displayPicture
+      //console.log("server profile update body: ", req.body) "empty object return hua"
       const userId = req.user.id
       const image = await uploadImageToCloudinary(
         displayPicture,

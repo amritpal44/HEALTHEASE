@@ -141,3 +141,8 @@ async function sendPaymentSuccessEmail(response, amount, token) {
     console.log("PAYMENT SUCCESS EMAIL ERROR............", error)
   }
 }
+
+
+export function createMedicine(token, formData){
+  
+}
