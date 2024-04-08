@@ -1,9 +1,7 @@
 import { useSelector } from "react-redux"
 
 import RenderTotalAmount from "./RenderTotalAmount"
-import { ClipLoader } from "react-spinners"
 import RenderCartMedicines from "./RenderCartMedicines"
-import Navbar from "../../../Common/Navbar"
 
 export default function Cart() {
   const { total, totalItems } = useSelector((state) => state.cart)

@@ -1,8 +1,8 @@
 const userModel = require("../models/userModel");
 const categoryModel = require("../models/categoryModel");
-const { uploadImageToCloudinary } = require("../utils/uploadImageToCloudinary");
 const medicineModel = require("../models/medicineModel");
 const vendorModel = require("../models/vendorModel");
+const { uploadMultipleImagesToCloudinary } = require("../utils/uploadMultipleImagesToCloudinary");
 
 
 
@@ -11,17 +11,22 @@ exports.createMedicine = async(req, res) => {
     try {        
         const userId = req.user.id;
 
-        const {name, description, category, price, stock} = JSON.parse(req.body.data);
+        const {name, description, category, price, stock, imagesSize} = JSON.parse(req.body.data);
         //const vendor =userId;
 
         // console.log("req.body: ", req.body);
         // console.log("req.files: ", req.files);
 
-        const images = req.files.images;
+        var images = [];
 
-        // console.log("images in createMedicine", images);
+        for(var i = 0; i < imagesSize; i++){
+            images.push(req.files[`image${i}`]);
+        }
 
-        if(!name ||  !description || !category || !price || !stock || !images){
+
+        //console.log("images backend: ", images)
+
+        if(!name ||  !description || !category || !price || !stock ){
             return res.status(400).json({
                 success: false,
                 message: "All Fields not entered in createMedicine"
@@ -48,11 +53,17 @@ exports.createMedicine = async(req, res) => {
         }
 
         //upload image to cloudinary
-        const imageUploadDetail = await uploadImageToCloudinary(
+        const imageUploadDetail = await uploadMultipleImagesToCloudinary(
             images,
             "HealthEase/Medicine_Images"
         )
-        // console.log(imageUploadDetail); image upload ho rahi hae
+        //image upload ho rahi hae, aur return mae array mil raha hae
+        //console.log("image upload detal", imageUploadDetail); 
+
+        //array of secure urls
+        const secureUrlArr = imageUploadDetail.map( (unit) => {
+            return unit.secure_url
+        })
 
         const newMedicine = await medicineModel.create({
             name,
@@ -60,7 +71,7 @@ exports.createMedicine = async(req, res) => {
             category: [categoryDetail._id],
             price,
             stock,
-            images: [imageUploadDetail.secure_url],
+            images: secureUrlArr,
             vendor: [vendorDetail._id]
         })
 

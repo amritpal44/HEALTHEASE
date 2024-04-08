@@ -1,5 +1,5 @@
 
-import { Routes,Route, useNavigate, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import HomePage from './pages/HomePage';
 // import Navbar from './components/Common/Navbar';
@@ -92,7 +92,7 @@ function App() {
 
         {/*********************  BOOKING ROUTES  *********************/}
         {
-          user?.accountType === "Patient" && (
+          (user?.accountType === "Patient" || user?.accountType === "Vendor") && (
             <>
               <Route 
                 path='/doctor/book-appointment/:doctorId'

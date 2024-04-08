@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../components/Common/Navbar'
 import { useForm } from 'react-hook-form'
 import { apiConnector } from '../services/apiconnector';
 import { medicineEndpoints } from '../services/apis';
@@ -11,6 +10,9 @@ const UploadMedicine = () => {
 
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState();
+  const [files, setFiles] = useState(null);
+  const [imageLoading, setImageLoading] = useState(false);
+
   const {token} = useSelector((state) => state.auth)
   const {
     register, 
@@ -41,32 +43,49 @@ const UploadMedicine = () => {
     fetchCategories()
   }, [])
 
+
+  const handleFileChange = (e) => {
+    setFiles(e.target.files);
+  }
+  
   
   const onSubmit = async (data) => {
-    console.log(data);
+    //console.log(data);
     
-    const images = data.images;
-    console.log("images: ", images);
-
-    delete data.images;
-
+    //const images = data.images;
+    //console.log("images: ", images);
+    setImageLoading(true);
+    
     const formData = new FormData();
-    formData.append("images", images[0]);
+    //files ki array banane se data req.files mae nahi ja raha, freq.body mae ja raha hae
+
+    const images = files;
+    for(var i = 0; i < images.length; i++){
+      formData.append(`image${i}`, images[i]);
+    }
+
+    //delete data.images;
+
+    data.imagesSize = images.length;
 
     formData.append("data", JSON.stringify(data));
-
+    
     try {
       const response = await apiConnector("POST", medicineEndpoints.CREATE_MEDICINE, formData, {
         Authorization: `Bearer ${token}`
       })
-      console.log(response);
+      //console.log("response: ", response);
 
-      if(response?.data?.success == true){
+      if(response?.data?.success === true){
         toast.success("Medicine Uploaded Successfully")
       }
+
+      setImageLoading(false);
     } catch (error) {
-      console.log("error while creating medicine")
+      console.log("error while creating medicine in frontend")
       console.log("error", error)
+      toast.error("not able to create medicine");
+      setImageLoading(false);
     }
   }
 
@@ -143,25 +162,57 @@ const UploadMedicine = () => {
               </div>
 
               {/* images */}
-              <div>
-                <input 
-                  name='images'
-                  type='file'
-                  {...register("images" , {required: true})}
-                />       
-                { errors.images && <span className="text-red-700 text-sm">This field is required</span>}
+              <div className='flex flex-col'>
+                <div>
+                  <input 
+                    name='images'
+                    type='file'
+                    multiple
+                    required
+                    onChange={handleFileChange}
+                    //{...register("images" , {required: true})}
+                  />       
+                  { errors.images && <span className="text-red-700 text-sm">This field is required</span>}
+                </div>
+                <div className='flex flex-col'>
+                  <h1>Preview</h1>
+                  <div className='flex'>
+                    {files && (() => {
+                      const imageElements = [];
+                      for (let i = 0; i < files.length; i++) {
+                        const file = files[i];
+                        imageElements.push(
+                          <div key={i} >
+                            <img src={URL.createObjectURL(file)} className='object-contain w-32 h-32' alt='Preview'/>
+                          </div>
+                        );
+                      }
+                      return imageElements;
+                    })()}
+                  </div>
+
+                </div>
               </div>
   
               <button
-                disabled={loading}
+                disabled={imageLoading}
                 type="submit"
                 className={`bg-[#3d65ff] rounded-lg text-slate-200 sm:rounded-lg font-bold text-xl sm:text-2xl  sm:px-[18px] py-[12px] sm:py-[17px] cursor-pointer hover:-translate-y-1 ease-linear duration-200 mt-4
                   ${
-                    loading ? 'opacity-30 cursor-not-allowed' : ''
+                    imageLoading ? 'opacity-60 cursor-not-allowed' : ''
                   }
                 `}
               >
-                Submit
+                {
+                  !imageLoading && (
+                    <p>Submit</p>
+                  )
+                }
+                {
+                  imageLoading && (
+                    <p>Loading...</p>
+                  )
+                }
               </button>
             </form>
           </div>

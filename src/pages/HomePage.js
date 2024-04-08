@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 //import homebuildings2 from "../assests/images/istockphoto-1289383957-170667a.webp"
 // import './HomePage.css'
 import { useEffect } from 'react'
@@ -16,13 +15,11 @@ import globe from "../assests/logo/globe.png"
 import contactus from "../assests/logo/contactus.png"
 
 import {FaArrowRight} from "react-icons/fa"
-import Navbar from '../components/Common/Navbar'
 // import { useForm } from 'react-hook-form'
 // import { apiConnector } from '../services/apiconnector'
 // import { contactusEndpoint } from '../services/apis'
 // import toast from 'react-hot-toast'
 import Footer from '../components/Common/Footer'
-import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 const HomePage = () => {
@@ -110,9 +107,20 @@ const HomePage = () => {
               )
             }
 
-            <SecondaryButton linkto={"/medicines"}>
-              Buy Medicines
-            </SecondaryButton>
+            {
+              user?.accountType !== "Vendor" && (
+                <SecondaryButton linkto={"/medicines"}>
+                  Buy Medicines
+                </SecondaryButton>
+              )
+            }
+            {
+              user?.accountType === "Vendor" && (
+                <SecondaryButton linkto={"/doctors"}>
+                  Book an appointment
+                </SecondaryButton>
+              )
+            }
 
           </div>
         </div>
