@@ -36,7 +36,8 @@ database.connect();
 cloudinaryConnect();
 
 
-// middleware
+// gloabal middleware
+//all routes below this will use this middleware
 app.use(express.json());
 app.use(cookieParser());
 app.use(
