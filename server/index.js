@@ -49,7 +49,7 @@ app.use(
 
 //allow request from http://localhost:3000
 app.use(cors({ 
-    origin: ["http://localhost:3000", "https://healthease44.vercel.app" ],
+    origin: true,
     credentials: true,
 }));
 
